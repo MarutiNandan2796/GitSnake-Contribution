@@ -1,0 +1,3067 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 664 172" width="100%" height="100%">
+  <defs>
+    <!-- Background Card Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#0b0e14" />
+    </linearGradient>
+    
+  </defs>
+
+  <style>
+    /* Card Styles */
+    .card-bg {
+      fill: url(#bg-grad);
+      stroke: #30363d;
+      stroke-width: 1.5px;
+      rx: 8px;
+    }
+    .card-title {
+      font-family: 'Outfit', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      fill: #50ff74;
+    }
+    .card-subtitle {
+      font-family: 'Outfit', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      fill: #006d32;
+      opacity: 0.8;
+    }
+    .legend-text {
+      font-family: 'Segoe UI', -apple-system, sans-serif;
+      font-size: 9px;
+      fill: #006d32;
+      opacity: 0.7;
+    }
+
+    /* Animation CSS */
+    #snake-head {
+      transform-origin: 5px 5px;
+      animation: head-motion 48.00s linear infinite;
+    }
+    #snake-tail {
+      transform-origin: 5px 5px;
+      animation: tail-motion 48.00s linear infinite;
+    }
+    #food-item {
+      transform-origin: 5px 5px;
+      animation: food-motion 48.00s linear infinite;
+    }
+    
+    
+    #snake-segment-0 {
+      animation: segment-0-motion 48.00s linear infinite;
+    }
+    #snake-segment-1 {
+      animation: segment-1-motion 48.00s linear infinite;
+    }
+    #snake-segment-2 {
+      animation: segment-2-motion 48.00s linear infinite;
+    }
+    #snake-segment-3 {
+      animation: segment-3-motion 48.00s linear infinite;
+    }
+    #snake-segment-4 {
+      animation: segment-4-motion 48.00s linear infinite;
+    }
+    #snake-segment-5 {
+      animation: segment-5-motion 48.00s linear infinite;
+    }
+    
+    .cell-anim-3-0 {
+      animation: cell-fade-3-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-4-2 {
+      animation: cell-fade-4-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-3-2 {
+      animation: cell-fade-3-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-2-2 {
+      animation: cell-fade-2-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-1-2 {
+      animation: cell-fade-1-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-0-2 {
+      animation: cell-fade-0-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-0-1 {
+      animation: cell-fade-0-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-1-3 {
+      animation: cell-fade-1-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-1-4 {
+      animation: cell-fade-1-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-2-4 {
+      animation: cell-fade-2-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-2-3 {
+      animation: cell-fade-2-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-3-3 {
+      animation: cell-fade-3-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-4-3 {
+      animation: cell-fade-4-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-4-4 {
+      animation: cell-fade-4-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-5-4 {
+      animation: cell-fade-5-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-6-4 {
+      animation: cell-fade-6-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-6-3 {
+      animation: cell-fade-6-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-7-3 {
+      animation: cell-fade-7-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-8-3 {
+      animation: cell-fade-8-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-8-4 {
+      animation: cell-fade-8-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-9-3 {
+      animation: cell-fade-9-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-9-2 {
+      animation: cell-fade-9-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-10-2 {
+      animation: cell-fade-10-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-10-1 {
+      animation: cell-fade-10-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-10-0 {
+      animation: cell-fade-10-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-9-0 {
+      animation: cell-fade-9-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-6-1 {
+      animation: cell-fade-6-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-5-1 {
+      animation: cell-fade-5-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-5-2 {
+      animation: cell-fade-5-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-3-5 {
+      animation: cell-fade-3-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-2-6 {
+      animation: cell-fade-2-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-6-6 {
+      animation: cell-fade-6-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-11-6 {
+      animation: cell-fade-11-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-12-5 {
+      animation: cell-fade-12-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-13-5 {
+      animation: cell-fade-13-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-13-4 {
+      animation: cell-fade-13-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-13-3 {
+      animation: cell-fade-13-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-12-3 {
+      animation: cell-fade-12-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-11-3 {
+      animation: cell-fade-11-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-10-3 {
+      animation: cell-fade-10-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-12-2 {
+      animation: cell-fade-12-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-12-1 {
+      animation: cell-fade-12-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-13-1 {
+      animation: cell-fade-13-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-13-0 {
+      animation: cell-fade-13-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-14-1 {
+      animation: cell-fade-14-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-14-2 {
+      animation: cell-fade-14-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-13-2 {
+      animation: cell-fade-13-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-14-3 {
+      animation: cell-fade-14-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-15-3 {
+      animation: cell-fade-15-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-15-2 {
+      animation: cell-fade-15-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-15-1 {
+      animation: cell-fade-15-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-16-2 {
+      animation: cell-fade-16-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-16-3 {
+      animation: cell-fade-16-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-16-4 {
+      animation: cell-fade-16-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-15-5 {
+      animation: cell-fade-15-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-18-5 {
+      animation: cell-fade-18-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-18-3 {
+      animation: cell-fade-18-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-17-3 {
+      animation: cell-fade-17-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-17-1 {
+      animation: cell-fade-17-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-18-0 {
+      animation: cell-fade-18-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-19-0 {
+      animation: cell-fade-19-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-19-1 {
+      animation: cell-fade-19-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-19-2 {
+      animation: cell-fade-19-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-19-3 {
+      animation: cell-fade-19-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-20-3 {
+      animation: cell-fade-20-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-20-4 {
+      animation: cell-fade-20-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-20-5 {
+      animation: cell-fade-20-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-21-5 {
+      animation: cell-fade-21-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-22-6 {
+      animation: cell-fade-22-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-23-6 {
+      animation: cell-fade-23-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-24-6 {
+      animation: cell-fade-24-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-25-6 {
+      animation: cell-fade-25-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-26-5 {
+      animation: cell-fade-26-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-28-5 {
+      animation: cell-fade-28-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-28-3 {
+      animation: cell-fade-28-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-27-3 {
+      animation: cell-fade-27-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-27-2 {
+      animation: cell-fade-27-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-26-2 {
+      animation: cell-fade-26-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-25-2 {
+      animation: cell-fade-25-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-24-2 {
+      animation: cell-fade-24-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-23-2 {
+      animation: cell-fade-23-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-22-2 {
+      animation: cell-fade-22-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-21-2 {
+      animation: cell-fade-21-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-21-0 {
+      animation: cell-fade-21-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-22-1 {
+      animation: cell-fade-22-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-23-0 {
+      animation: cell-fade-23-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-23-3 {
+      animation: cell-fade-23-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-23-4 {
+      animation: cell-fade-23-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-25-3 {
+      animation: cell-fade-25-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-26-0 {
+      animation: cell-fade-26-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-27-0 {
+      animation: cell-fade-27-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-30-1 {
+      animation: cell-fade-30-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-30-3 {
+      animation: cell-fade-30-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-31-3 {
+      animation: cell-fade-31-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-32-3 {
+      animation: cell-fade-32-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-33-3 {
+      animation: cell-fade-33-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-33-2 {
+      animation: cell-fade-33-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-33-1 {
+      animation: cell-fade-33-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-34-1 {
+      animation: cell-fade-34-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-34-2 {
+      animation: cell-fade-34-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-35-2 {
+      animation: cell-fade-35-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-35-3 {
+      animation: cell-fade-35-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-35-4 {
+      animation: cell-fade-35-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-34-4 {
+      animation: cell-fade-34-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-33-5 {
+      animation: cell-fade-33-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-31-5 {
+      animation: cell-fade-31-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-30-5 {
+      animation: cell-fade-30-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-30-6 {
+      animation: cell-fade-30-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-32-6 {
+      animation: cell-fade-32-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-35-6 {
+      animation: cell-fade-35-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-35-5 {
+      animation: cell-fade-35-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-36-3 {
+      animation: cell-fade-36-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-36-2 {
+      animation: cell-fade-36-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-37-2 {
+      animation: cell-fade-37-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-37-1 {
+      animation: cell-fade-37-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-37-0 {
+      animation: cell-fade-37-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-36-0 {
+      animation: cell-fade-36-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-32-0 {
+      animation: cell-fade-32-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-37-3 {
+      animation: cell-fade-37-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-38-3 {
+      animation: cell-fade-38-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-38-2 {
+      animation: cell-fade-38-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-39-3 {
+      animation: cell-fade-39-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-40-3 {
+      animation: cell-fade-40-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-40-4 {
+      animation: cell-fade-40-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-40-5 {
+      animation: cell-fade-40-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-39-5 {
+      animation: cell-fade-39-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-37-6 {
+      animation: cell-fade-37-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-42-6 {
+      animation: cell-fade-42-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-42-5 {
+      animation: cell-fade-42-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-42-4 {
+      animation: cell-fade-42-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-41-4 {
+      animation: cell-fade-41-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-41-3 {
+      animation: cell-fade-41-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-41-2 {
+      animation: cell-fade-41-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-41-1 {
+      animation: cell-fade-41-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-40-1 {
+      animation: cell-fade-40-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-40-0 {
+      animation: cell-fade-40-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-42-2 {
+      animation: cell-fade-42-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-42-3 {
+      animation: cell-fade-42-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-43-3 {
+      animation: cell-fade-43-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-44-3 {
+      animation: cell-fade-44-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-44-2 {
+      animation: cell-fade-44-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-44-1 {
+      animation: cell-fade-44-1 48.00s steps(1) infinite;
+    }
+    .cell-anim-45-2 {
+      animation: cell-fade-45-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-45-3 {
+      animation: cell-fade-45-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-46-3 {
+      animation: cell-fade-46-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-46-2 {
+      animation: cell-fade-46-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-47-2 {
+      animation: cell-fade-47-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-47-3 {
+      animation: cell-fade-47-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-46-4 {
+      animation: cell-fade-46-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-46-5 {
+      animation: cell-fade-46-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-45-5 {
+      animation: cell-fade-45-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-45-6 {
+      animation: cell-fade-45-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-43-5 {
+      animation: cell-fade-43-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-44-4 {
+      animation: cell-fade-44-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-48-4 {
+      animation: cell-fade-48-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-48-5 {
+      animation: cell-fade-48-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-49-4 {
+      animation: cell-fade-49-4 48.00s steps(1) infinite;
+    }
+    .cell-anim-49-3 {
+      animation: cell-fade-49-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-50-3 {
+      animation: cell-fade-50-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-51-3 {
+      animation: cell-fade-51-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-51-2 {
+      animation: cell-fade-51-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-52-2 {
+      animation: cell-fade-52-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-52-3 {
+      animation: cell-fade-52-3 48.00s steps(1) infinite;
+    }
+    .cell-anim-51-5 {
+      animation: cell-fade-51-5 48.00s steps(1) infinite;
+    }
+    .cell-anim-51-6 {
+      animation: cell-fade-51-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-49-6 {
+      animation: cell-fade-49-6 48.00s steps(1) infinite;
+    }
+    .cell-anim-48-2 {
+      animation: cell-fade-48-2 48.00s steps(1) infinite;
+    }
+    .cell-anim-50-0 {
+      animation: cell-fade-50-0 48.00s steps(1) infinite;
+    }
+    .cell-anim-51-0 {
+      animation: cell-fade-51-0 48.00s steps(1) infinite;
+    }
+    
+    .p-0-0 {
+      transform-origin: center;
+      animation: p-anim-0-0 48.00s linear infinite;
+    }
+    .p-0-1 {
+      transform-origin: center;
+      animation: p-anim-0-1 48.00s linear infinite;
+    }
+    .p-0-2 {
+      transform-origin: center;
+      animation: p-anim-0-2 48.00s linear infinite;
+    }
+    .p-1-0 {
+      transform-origin: center;
+      animation: p-anim-1-0 48.00s linear infinite;
+    }
+    .p-1-1 {
+      transform-origin: center;
+      animation: p-anim-1-1 48.00s linear infinite;
+    }
+    .p-1-2 {
+      transform-origin: center;
+      animation: p-anim-1-2 48.00s linear infinite;
+    }
+    .p-2-0 {
+      transform-origin: center;
+      animation: p-anim-2-0 48.00s linear infinite;
+    }
+    .p-2-1 {
+      transform-origin: center;
+      animation: p-anim-2-1 48.00s linear infinite;
+    }
+    .p-2-2 {
+      transform-origin: center;
+      animation: p-anim-2-2 48.00s linear infinite;
+    }
+    .p-3-0 {
+      transform-origin: center;
+      animation: p-anim-3-0 48.00s linear infinite;
+    }
+    .p-3-1 {
+      transform-origin: center;
+      animation: p-anim-3-1 48.00s linear infinite;
+    }
+    .p-3-2 {
+      transform-origin: center;
+      animation: p-anim-3-2 48.00s linear infinite;
+    }
+    .p-4-0 {
+      transform-origin: center;
+      animation: p-anim-4-0 48.00s linear infinite;
+    }
+    .p-4-1 {
+      transform-origin: center;
+      animation: p-anim-4-1 48.00s linear infinite;
+    }
+    .p-4-2 {
+      transform-origin: center;
+      animation: p-anim-4-2 48.00s linear infinite;
+    }
+    .p-5-0 {
+      transform-origin: center;
+      animation: p-anim-5-0 48.00s linear infinite;
+    }
+    .p-5-1 {
+      transform-origin: center;
+      animation: p-anim-5-1 48.00s linear infinite;
+    }
+    .p-5-2 {
+      transform-origin: center;
+      animation: p-anim-5-2 48.00s linear infinite;
+    }
+    .p-6-0 {
+      transform-origin: center;
+      animation: p-anim-6-0 48.00s linear infinite;
+    }
+    .p-6-1 {
+      transform-origin: center;
+      animation: p-anim-6-1 48.00s linear infinite;
+    }
+    .p-6-2 {
+      transform-origin: center;
+      animation: p-anim-6-2 48.00s linear infinite;
+    }
+    .p-7-0 {
+      transform-origin: center;
+      animation: p-anim-7-0 48.00s linear infinite;
+    }
+    .p-7-1 {
+      transform-origin: center;
+      animation: p-anim-7-1 48.00s linear infinite;
+    }
+    .p-7-2 {
+      transform-origin: center;
+      animation: p-anim-7-2 48.00s linear infinite;
+    }
+    .p-8-0 {
+      transform-origin: center;
+      animation: p-anim-8-0 48.00s linear infinite;
+    }
+    .p-8-1 {
+      transform-origin: center;
+      animation: p-anim-8-1 48.00s linear infinite;
+    }
+    .p-8-2 {
+      transform-origin: center;
+      animation: p-anim-8-2 48.00s linear infinite;
+    }
+    .p-9-0 {
+      transform-origin: center;
+      animation: p-anim-9-0 48.00s linear infinite;
+    }
+    .p-9-1 {
+      transform-origin: center;
+      animation: p-anim-9-1 48.00s linear infinite;
+    }
+    .p-9-2 {
+      transform-origin: center;
+      animation: p-anim-9-2 48.00s linear infinite;
+    }
+    .p-10-0 {
+      transform-origin: center;
+      animation: p-anim-10-0 48.00s linear infinite;
+    }
+    .p-10-1 {
+      transform-origin: center;
+      animation: p-anim-10-1 48.00s linear infinite;
+    }
+    .p-10-2 {
+      transform-origin: center;
+      animation: p-anim-10-2 48.00s linear infinite;
+    }
+    .p-11-0 {
+      transform-origin: center;
+      animation: p-anim-11-0 48.00s linear infinite;
+    }
+    .p-11-1 {
+      transform-origin: center;
+      animation: p-anim-11-1 48.00s linear infinite;
+    }
+    .p-11-2 {
+      transform-origin: center;
+      animation: p-anim-11-2 48.00s linear infinite;
+    }
+    .p-12-0 {
+      transform-origin: center;
+      animation: p-anim-12-0 48.00s linear infinite;
+    }
+    .p-12-1 {
+      transform-origin: center;
+      animation: p-anim-12-1 48.00s linear infinite;
+    }
+    .p-12-2 {
+      transform-origin: center;
+      animation: p-anim-12-2 48.00s linear infinite;
+    }
+    .p-13-0 {
+      transform-origin: center;
+      animation: p-anim-13-0 48.00s linear infinite;
+    }
+    .p-13-1 {
+      transform-origin: center;
+      animation: p-anim-13-1 48.00s linear infinite;
+    }
+    .p-13-2 {
+      transform-origin: center;
+      animation: p-anim-13-2 48.00s linear infinite;
+    }
+    .p-14-0 {
+      transform-origin: center;
+      animation: p-anim-14-0 48.00s linear infinite;
+    }
+    .p-14-1 {
+      transform-origin: center;
+      animation: p-anim-14-1 48.00s linear infinite;
+    }
+    .p-14-2 {
+      transform-origin: center;
+      animation: p-anim-14-2 48.00s linear infinite;
+    }
+    .p-15-0 {
+      transform-origin: center;
+      animation: p-anim-15-0 48.00s linear infinite;
+    }
+    .p-15-1 {
+      transform-origin: center;
+      animation: p-anim-15-1 48.00s linear infinite;
+    }
+    .p-15-2 {
+      transform-origin: center;
+      animation: p-anim-15-2 48.00s linear infinite;
+    }
+    .p-16-0 {
+      transform-origin: center;
+      animation: p-anim-16-0 48.00s linear infinite;
+    }
+    .p-16-1 {
+      transform-origin: center;
+      animation: p-anim-16-1 48.00s linear infinite;
+    }
+    .p-16-2 {
+      transform-origin: center;
+      animation: p-anim-16-2 48.00s linear infinite;
+    }
+    .p-17-0 {
+      transform-origin: center;
+      animation: p-anim-17-0 48.00s linear infinite;
+    }
+    .p-17-1 {
+      transform-origin: center;
+      animation: p-anim-17-1 48.00s linear infinite;
+    }
+    .p-17-2 {
+      transform-origin: center;
+      animation: p-anim-17-2 48.00s linear infinite;
+    }
+    .p-18-0 {
+      transform-origin: center;
+      animation: p-anim-18-0 48.00s linear infinite;
+    }
+    .p-18-1 {
+      transform-origin: center;
+      animation: p-anim-18-1 48.00s linear infinite;
+    }
+    .p-18-2 {
+      transform-origin: center;
+      animation: p-anim-18-2 48.00s linear infinite;
+    }
+    .p-19-0 {
+      transform-origin: center;
+      animation: p-anim-19-0 48.00s linear infinite;
+    }
+    .p-19-1 {
+      transform-origin: center;
+      animation: p-anim-19-1 48.00s linear infinite;
+    }
+    .p-19-2 {
+      transform-origin: center;
+      animation: p-anim-19-2 48.00s linear infinite;
+    }
+    .p-20-0 {
+      transform-origin: center;
+      animation: p-anim-20-0 48.00s linear infinite;
+    }
+    .p-20-1 {
+      transform-origin: center;
+      animation: p-anim-20-1 48.00s linear infinite;
+    }
+    .p-20-2 {
+      transform-origin: center;
+      animation: p-anim-20-2 48.00s linear infinite;
+    }
+    .p-21-0 {
+      transform-origin: center;
+      animation: p-anim-21-0 48.00s linear infinite;
+    }
+    .p-21-1 {
+      transform-origin: center;
+      animation: p-anim-21-1 48.00s linear infinite;
+    }
+    .p-21-2 {
+      transform-origin: center;
+      animation: p-anim-21-2 48.00s linear infinite;
+    }
+    .p-22-0 {
+      transform-origin: center;
+      animation: p-anim-22-0 48.00s linear infinite;
+    }
+    .p-22-1 {
+      transform-origin: center;
+      animation: p-anim-22-1 48.00s linear infinite;
+    }
+    .p-22-2 {
+      transform-origin: center;
+      animation: p-anim-22-2 48.00s linear infinite;
+    }
+    .p-23-0 {
+      transform-origin: center;
+      animation: p-anim-23-0 48.00s linear infinite;
+    }
+    .p-23-1 {
+      transform-origin: center;
+      animation: p-anim-23-1 48.00s linear infinite;
+    }
+    .p-23-2 {
+      transform-origin: center;
+      animation: p-anim-23-2 48.00s linear infinite;
+    }
+    .p-24-0 {
+      transform-origin: center;
+      animation: p-anim-24-0 48.00s linear infinite;
+    }
+    .p-24-1 {
+      transform-origin: center;
+      animation: p-anim-24-1 48.00s linear infinite;
+    }
+    .p-24-2 {
+      transform-origin: center;
+      animation: p-anim-24-2 48.00s linear infinite;
+    }
+    .p-25-0 {
+      transform-origin: center;
+      animation: p-anim-25-0 48.00s linear infinite;
+    }
+    .p-25-1 {
+      transform-origin: center;
+      animation: p-anim-25-1 48.00s linear infinite;
+    }
+    .p-25-2 {
+      transform-origin: center;
+      animation: p-anim-25-2 48.00s linear infinite;
+    }
+    .p-26-0 {
+      transform-origin: center;
+      animation: p-anim-26-0 48.00s linear infinite;
+    }
+    .p-26-1 {
+      transform-origin: center;
+      animation: p-anim-26-1 48.00s linear infinite;
+    }
+    .p-26-2 {
+      transform-origin: center;
+      animation: p-anim-26-2 48.00s linear infinite;
+    }
+    .p-27-0 {
+      transform-origin: center;
+      animation: p-anim-27-0 48.00s linear infinite;
+    }
+    .p-27-1 {
+      transform-origin: center;
+      animation: p-anim-27-1 48.00s linear infinite;
+    }
+    .p-27-2 {
+      transform-origin: center;
+      animation: p-anim-27-2 48.00s linear infinite;
+    }
+    .p-28-0 {
+      transform-origin: center;
+      animation: p-anim-28-0 48.00s linear infinite;
+    }
+    .p-28-1 {
+      transform-origin: center;
+      animation: p-anim-28-1 48.00s linear infinite;
+    }
+    .p-28-2 {
+      transform-origin: center;
+      animation: p-anim-28-2 48.00s linear infinite;
+    }
+    .p-29-0 {
+      transform-origin: center;
+      animation: p-anim-29-0 48.00s linear infinite;
+    }
+    .p-29-1 {
+      transform-origin: center;
+      animation: p-anim-29-1 48.00s linear infinite;
+    }
+    .p-29-2 {
+      transform-origin: center;
+      animation: p-anim-29-2 48.00s linear infinite;
+    }
+    .p-30-0 {
+      transform-origin: center;
+      animation: p-anim-30-0 48.00s linear infinite;
+    }
+    .p-30-1 {
+      transform-origin: center;
+      animation: p-anim-30-1 48.00s linear infinite;
+    }
+    .p-30-2 {
+      transform-origin: center;
+      animation: p-anim-30-2 48.00s linear infinite;
+    }
+    .p-31-0 {
+      transform-origin: center;
+      animation: p-anim-31-0 48.00s linear infinite;
+    }
+    .p-31-1 {
+      transform-origin: center;
+      animation: p-anim-31-1 48.00s linear infinite;
+    }
+    .p-31-2 {
+      transform-origin: center;
+      animation: p-anim-31-2 48.00s linear infinite;
+    }
+    .p-32-0 {
+      transform-origin: center;
+      animation: p-anim-32-0 48.00s linear infinite;
+    }
+    .p-32-1 {
+      transform-origin: center;
+      animation: p-anim-32-1 48.00s linear infinite;
+    }
+    .p-32-2 {
+      transform-origin: center;
+      animation: p-anim-32-2 48.00s linear infinite;
+    }
+    .p-33-0 {
+      transform-origin: center;
+      animation: p-anim-33-0 48.00s linear infinite;
+    }
+    .p-33-1 {
+      transform-origin: center;
+      animation: p-anim-33-1 48.00s linear infinite;
+    }
+    .p-33-2 {
+      transform-origin: center;
+      animation: p-anim-33-2 48.00s linear infinite;
+    }
+    .p-34-0 {
+      transform-origin: center;
+      animation: p-anim-34-0 48.00s linear infinite;
+    }
+    .p-34-1 {
+      transform-origin: center;
+      animation: p-anim-34-1 48.00s linear infinite;
+    }
+    .p-34-2 {
+      transform-origin: center;
+      animation: p-anim-34-2 48.00s linear infinite;
+    }
+    .p-35-0 {
+      transform-origin: center;
+      animation: p-anim-35-0 48.00s linear infinite;
+    }
+    .p-35-1 {
+      transform-origin: center;
+      animation: p-anim-35-1 48.00s linear infinite;
+    }
+    .p-35-2 {
+      transform-origin: center;
+      animation: p-anim-35-2 48.00s linear infinite;
+    }
+    .p-36-0 {
+      transform-origin: center;
+      animation: p-anim-36-0 48.00s linear infinite;
+    }
+    .p-36-1 {
+      transform-origin: center;
+      animation: p-anim-36-1 48.00s linear infinite;
+    }
+    .p-36-2 {
+      transform-origin: center;
+      animation: p-anim-36-2 48.00s linear infinite;
+    }
+    .p-37-0 {
+      transform-origin: center;
+      animation: p-anim-37-0 48.00s linear infinite;
+    }
+    .p-37-1 {
+      transform-origin: center;
+      animation: p-anim-37-1 48.00s linear infinite;
+    }
+    .p-37-2 {
+      transform-origin: center;
+      animation: p-anim-37-2 48.00s linear infinite;
+    }
+    .p-38-0 {
+      transform-origin: center;
+      animation: p-anim-38-0 48.00s linear infinite;
+    }
+    .p-38-1 {
+      transform-origin: center;
+      animation: p-anim-38-1 48.00s linear infinite;
+    }
+    .p-38-2 {
+      transform-origin: center;
+      animation: p-anim-38-2 48.00s linear infinite;
+    }
+    .p-39-0 {
+      transform-origin: center;
+      animation: p-anim-39-0 48.00s linear infinite;
+    }
+    .p-39-1 {
+      transform-origin: center;
+      animation: p-anim-39-1 48.00s linear infinite;
+    }
+    .p-39-2 {
+      transform-origin: center;
+      animation: p-anim-39-2 48.00s linear infinite;
+    }
+    .p-40-0 {
+      transform-origin: center;
+      animation: p-anim-40-0 48.00s linear infinite;
+    }
+    .p-40-1 {
+      transform-origin: center;
+      animation: p-anim-40-1 48.00s linear infinite;
+    }
+    .p-40-2 {
+      transform-origin: center;
+      animation: p-anim-40-2 48.00s linear infinite;
+    }
+    .p-41-0 {
+      transform-origin: center;
+      animation: p-anim-41-0 48.00s linear infinite;
+    }
+    .p-41-1 {
+      transform-origin: center;
+      animation: p-anim-41-1 48.00s linear infinite;
+    }
+    .p-41-2 {
+      transform-origin: center;
+      animation: p-anim-41-2 48.00s linear infinite;
+    }
+    .p-42-0 {
+      transform-origin: center;
+      animation: p-anim-42-0 48.00s linear infinite;
+    }
+    .p-42-1 {
+      transform-origin: center;
+      animation: p-anim-42-1 48.00s linear infinite;
+    }
+    .p-42-2 {
+      transform-origin: center;
+      animation: p-anim-42-2 48.00s linear infinite;
+    }
+    .p-43-0 {
+      transform-origin: center;
+      animation: p-anim-43-0 48.00s linear infinite;
+    }
+    .p-43-1 {
+      transform-origin: center;
+      animation: p-anim-43-1 48.00s linear infinite;
+    }
+    .p-43-2 {
+      transform-origin: center;
+      animation: p-anim-43-2 48.00s linear infinite;
+    }
+    .p-44-0 {
+      transform-origin: center;
+      animation: p-anim-44-0 48.00s linear infinite;
+    }
+    .p-44-1 {
+      transform-origin: center;
+      animation: p-anim-44-1 48.00s linear infinite;
+    }
+    .p-44-2 {
+      transform-origin: center;
+      animation: p-anim-44-2 48.00s linear infinite;
+    }
+    .p-45-0 {
+      transform-origin: center;
+      animation: p-anim-45-0 48.00s linear infinite;
+    }
+    .p-45-1 {
+      transform-origin: center;
+      animation: p-anim-45-1 48.00s linear infinite;
+    }
+    .p-45-2 {
+      transform-origin: center;
+      animation: p-anim-45-2 48.00s linear infinite;
+    }
+    .p-46-0 {
+      transform-origin: center;
+      animation: p-anim-46-0 48.00s linear infinite;
+    }
+    .p-46-1 {
+      transform-origin: center;
+      animation: p-anim-46-1 48.00s linear infinite;
+    }
+    .p-46-2 {
+      transform-origin: center;
+      animation: p-anim-46-2 48.00s linear infinite;
+    }
+    .p-47-0 {
+      transform-origin: center;
+      animation: p-anim-47-0 48.00s linear infinite;
+    }
+    .p-47-1 {
+      transform-origin: center;
+      animation: p-anim-47-1 48.00s linear infinite;
+    }
+    .p-47-2 {
+      transform-origin: center;
+      animation: p-anim-47-2 48.00s linear infinite;
+    }
+    .p-48-0 {
+      transform-origin: center;
+      animation: p-anim-48-0 48.00s linear infinite;
+    }
+    .p-48-1 {
+      transform-origin: center;
+      animation: p-anim-48-1 48.00s linear infinite;
+    }
+    .p-48-2 {
+      transform-origin: center;
+      animation: p-anim-48-2 48.00s linear infinite;
+    }
+    .p-49-0 {
+      transform-origin: center;
+      animation: p-anim-49-0 48.00s linear infinite;
+    }
+    .p-49-1 {
+      transform-origin: center;
+      animation: p-anim-49-1 48.00s linear infinite;
+    }
+    .p-49-2 {
+      transform-origin: center;
+      animation: p-anim-49-2 48.00s linear infinite;
+    }
+    .p-50-0 {
+      transform-origin: center;
+      animation: p-anim-50-0 48.00s linear infinite;
+    }
+    .p-50-1 {
+      transform-origin: center;
+      animation: p-anim-50-1 48.00s linear infinite;
+    }
+    .p-50-2 {
+      transform-origin: center;
+      animation: p-anim-50-2 48.00s linear infinite;
+    }
+    .p-51-0 {
+      transform-origin: center;
+      animation: p-anim-51-0 48.00s linear infinite;
+    }
+    .p-51-1 {
+      transform-origin: center;
+      animation: p-anim-51-1 48.00s linear infinite;
+    }
+    .p-51-2 {
+      transform-origin: center;
+      animation: p-anim-51-2 48.00s linear infinite;
+    }
+    .p-52-0 {
+      transform-origin: center;
+      animation: p-anim-52-0 48.00s linear infinite;
+    }
+    .p-52-1 {
+      transform-origin: center;
+      animation: p-anim-52-1 48.00s linear infinite;
+    }
+    .p-52-2 {
+      transform-origin: center;
+      animation: p-anim-52-2 48.00s linear infinite;
+    }
+    .p-53-0 {
+      transform-origin: center;
+      animation: p-anim-53-0 48.00s linear infinite;
+    }
+    .p-53-1 {
+      transform-origin: center;
+      animation: p-anim-53-1 48.00s linear infinite;
+    }
+    .p-53-2 {
+      transform-origin: center;
+      animation: p-anim-53-2 48.00s linear infinite;
+    }
+    .p-54-0 {
+      transform-origin: center;
+      animation: p-anim-54-0 48.00s linear infinite;
+    }
+    .p-54-1 {
+      transform-origin: center;
+      animation: p-anim-54-1 48.00s linear infinite;
+    }
+    .p-54-2 {
+      transform-origin: center;
+      animation: p-anim-54-2 48.00s linear infinite;
+    }
+    .p-55-0 {
+      transform-origin: center;
+      animation: p-anim-55-0 48.00s linear infinite;
+    }
+    .p-55-1 {
+      transform-origin: center;
+      animation: p-anim-55-1 48.00s linear infinite;
+    }
+    .p-55-2 {
+      transform-origin: center;
+      animation: p-anim-55-2 48.00s linear infinite;
+    }
+    .p-56-0 {
+      transform-origin: center;
+      animation: p-anim-56-0 48.00s linear infinite;
+    }
+    .p-56-1 {
+      transform-origin: center;
+      animation: p-anim-56-1 48.00s linear infinite;
+    }
+    .p-56-2 {
+      transform-origin: center;
+      animation: p-anim-56-2 48.00s linear infinite;
+    }
+    .p-57-0 {
+      transform-origin: center;
+      animation: p-anim-57-0 48.00s linear infinite;
+    }
+    .p-57-1 {
+      transform-origin: center;
+      animation: p-anim-57-1 48.00s linear infinite;
+    }
+    .p-57-2 {
+      transform-origin: center;
+      animation: p-anim-57-2 48.00s linear infinite;
+    }
+    .p-58-0 {
+      transform-origin: center;
+      animation: p-anim-58-0 48.00s linear infinite;
+    }
+    .p-58-1 {
+      transform-origin: center;
+      animation: p-anim-58-1 48.00s linear infinite;
+    }
+    .p-58-2 {
+      transform-origin: center;
+      animation: p-anim-58-2 48.00s linear infinite;
+    }
+    .p-59-0 {
+      transform-origin: center;
+      animation: p-anim-59-0 48.00s linear infinite;
+    }
+    .p-59-1 {
+      transform-origin: center;
+      animation: p-anim-59-1 48.00s linear infinite;
+    }
+    .p-59-2 {
+      transform-origin: center;
+      animation: p-anim-59-2 48.00s linear infinite;
+    }
+    .p-60-0 {
+      transform-origin: center;
+      animation: p-anim-60-0 48.00s linear infinite;
+    }
+    .p-60-1 {
+      transform-origin: center;
+      animation: p-anim-60-1 48.00s linear infinite;
+    }
+    .p-60-2 {
+      transform-origin: center;
+      animation: p-anim-60-2 48.00s linear infinite;
+    }
+    .p-61-0 {
+      transform-origin: center;
+      animation: p-anim-61-0 48.00s linear infinite;
+    }
+    .p-61-1 {
+      transform-origin: center;
+      animation: p-anim-61-1 48.00s linear infinite;
+    }
+    .p-61-2 {
+      transform-origin: center;
+      animation: p-anim-61-2 48.00s linear infinite;
+    }
+    .p-62-0 {
+      transform-origin: center;
+      animation: p-anim-62-0 48.00s linear infinite;
+    }
+    .p-62-1 {
+      transform-origin: center;
+      animation: p-anim-62-1 48.00s linear infinite;
+    }
+    .p-62-2 {
+      transform-origin: center;
+      animation: p-anim-62-2 48.00s linear infinite;
+    }
+    .p-63-0 {
+      transform-origin: center;
+      animation: p-anim-63-0 48.00s linear infinite;
+    }
+    .p-63-1 {
+      transform-origin: center;
+      animation: p-anim-63-1 48.00s linear infinite;
+    }
+    .p-63-2 {
+      transform-origin: center;
+      animation: p-anim-63-2 48.00s linear infinite;
+    }
+    .p-64-0 {
+      transform-origin: center;
+      animation: p-anim-64-0 48.00s linear infinite;
+    }
+    .p-64-1 {
+      transform-origin: center;
+      animation: p-anim-64-1 48.00s linear infinite;
+    }
+    .p-64-2 {
+      transform-origin: center;
+      animation: p-anim-64-2 48.00s linear infinite;
+    }
+    .p-65-0 {
+      transform-origin: center;
+      animation: p-anim-65-0 48.00s linear infinite;
+    }
+    .p-65-1 {
+      transform-origin: center;
+      animation: p-anim-65-1 48.00s linear infinite;
+    }
+    .p-65-2 {
+      transform-origin: center;
+      animation: p-anim-65-2 48.00s linear infinite;
+    }
+    .p-66-0 {
+      transform-origin: center;
+      animation: p-anim-66-0 48.00s linear infinite;
+    }
+    .p-66-1 {
+      transform-origin: center;
+      animation: p-anim-66-1 48.00s linear infinite;
+    }
+    .p-66-2 {
+      transform-origin: center;
+      animation: p-anim-66-2 48.00s linear infinite;
+    }
+    .p-67-0 {
+      transform-origin: center;
+      animation: p-anim-67-0 48.00s linear infinite;
+    }
+    .p-67-1 {
+      transform-origin: center;
+      animation: p-anim-67-1 48.00s linear infinite;
+    }
+    .p-67-2 {
+      transform-origin: center;
+      animation: p-anim-67-2 48.00s linear infinite;
+    }
+    .p-68-0 {
+      transform-origin: center;
+      animation: p-anim-68-0 48.00s linear infinite;
+    }
+    .p-68-1 {
+      transform-origin: center;
+      animation: p-anim-68-1 48.00s linear infinite;
+    }
+    .p-68-2 {
+      transform-origin: center;
+      animation: p-anim-68-2 48.00s linear infinite;
+    }
+    .p-69-0 {
+      transform-origin: center;
+      animation: p-anim-69-0 48.00s linear infinite;
+    }
+    .p-69-1 {
+      transform-origin: center;
+      animation: p-anim-69-1 48.00s linear infinite;
+    }
+    .p-69-2 {
+      transform-origin: center;
+      animation: p-anim-69-2 48.00s linear infinite;
+    }
+    .p-70-0 {
+      transform-origin: center;
+      animation: p-anim-70-0 48.00s linear infinite;
+    }
+    .p-70-1 {
+      transform-origin: center;
+      animation: p-anim-70-1 48.00s linear infinite;
+    }
+    .p-70-2 {
+      transform-origin: center;
+      animation: p-anim-70-2 48.00s linear infinite;
+    }
+    .p-71-0 {
+      transform-origin: center;
+      animation: p-anim-71-0 48.00s linear infinite;
+    }
+    .p-71-1 {
+      transform-origin: center;
+      animation: p-anim-71-1 48.00s linear infinite;
+    }
+    .p-71-2 {
+      transform-origin: center;
+      animation: p-anim-71-2 48.00s linear infinite;
+    }
+    .p-72-0 {
+      transform-origin: center;
+      animation: p-anim-72-0 48.00s linear infinite;
+    }
+    .p-72-1 {
+      transform-origin: center;
+      animation: p-anim-72-1 48.00s linear infinite;
+    }
+    .p-72-2 {
+      transform-origin: center;
+      animation: p-anim-72-2 48.00s linear infinite;
+    }
+    .p-73-0 {
+      transform-origin: center;
+      animation: p-anim-73-0 48.00s linear infinite;
+    }
+    .p-73-1 {
+      transform-origin: center;
+      animation: p-anim-73-1 48.00s linear infinite;
+    }
+    .p-73-2 {
+      transform-origin: center;
+      animation: p-anim-73-2 48.00s linear infinite;
+    }
+    .p-74-0 {
+      transform-origin: center;
+      animation: p-anim-74-0 48.00s linear infinite;
+    }
+    .p-74-1 {
+      transform-origin: center;
+      animation: p-anim-74-1 48.00s linear infinite;
+    }
+    .p-74-2 {
+      transform-origin: center;
+      animation: p-anim-74-2 48.00s linear infinite;
+    }
+    .p-75-0 {
+      transform-origin: center;
+      animation: p-anim-75-0 48.00s linear infinite;
+    }
+    .p-75-1 {
+      transform-origin: center;
+      animation: p-anim-75-1 48.00s linear infinite;
+    }
+    .p-75-2 {
+      transform-origin: center;
+      animation: p-anim-75-2 48.00s linear infinite;
+    }
+    .p-76-0 {
+      transform-origin: center;
+      animation: p-anim-76-0 48.00s linear infinite;
+    }
+    .p-76-1 {
+      transform-origin: center;
+      animation: p-anim-76-1 48.00s linear infinite;
+    }
+    .p-76-2 {
+      transform-origin: center;
+      animation: p-anim-76-2 48.00s linear infinite;
+    }
+    .p-77-0 {
+      transform-origin: center;
+      animation: p-anim-77-0 48.00s linear infinite;
+    }
+    .p-77-1 {
+      transform-origin: center;
+      animation: p-anim-77-1 48.00s linear infinite;
+    }
+    .p-77-2 {
+      transform-origin: center;
+      animation: p-anim-77-2 48.00s linear infinite;
+    }
+    .p-78-0 {
+      transform-origin: center;
+      animation: p-anim-78-0 48.00s linear infinite;
+    }
+    .p-78-1 {
+      transform-origin: center;
+      animation: p-anim-78-1 48.00s linear infinite;
+    }
+    .p-78-2 {
+      transform-origin: center;
+      animation: p-anim-78-2 48.00s linear infinite;
+    }
+    .p-79-0 {
+      transform-origin: center;
+      animation: p-anim-79-0 48.00s linear infinite;
+    }
+    .p-79-1 {
+      transform-origin: center;
+      animation: p-anim-79-1 48.00s linear infinite;
+    }
+    .p-79-2 {
+      transform-origin: center;
+      animation: p-anim-79-2 48.00s linear infinite;
+    }
+    .p-80-0 {
+      transform-origin: center;
+      animation: p-anim-80-0 48.00s linear infinite;
+    }
+    .p-80-1 {
+      transform-origin: center;
+      animation: p-anim-80-1 48.00s linear infinite;
+    }
+    .p-80-2 {
+      transform-origin: center;
+      animation: p-anim-80-2 48.00s linear infinite;
+    }
+    .p-81-0 {
+      transform-origin: center;
+      animation: p-anim-81-0 48.00s linear infinite;
+    }
+    .p-81-1 {
+      transform-origin: center;
+      animation: p-anim-81-1 48.00s linear infinite;
+    }
+    .p-81-2 {
+      transform-origin: center;
+      animation: p-anim-81-2 48.00s linear infinite;
+    }
+    .p-82-0 {
+      transform-origin: center;
+      animation: p-anim-82-0 48.00s linear infinite;
+    }
+    .p-82-1 {
+      transform-origin: center;
+      animation: p-anim-82-1 48.00s linear infinite;
+    }
+    .p-82-2 {
+      transform-origin: center;
+      animation: p-anim-82-2 48.00s linear infinite;
+    }
+    .p-83-0 {
+      transform-origin: center;
+      animation: p-anim-83-0 48.00s linear infinite;
+    }
+    .p-83-1 {
+      transform-origin: center;
+      animation: p-anim-83-1 48.00s linear infinite;
+    }
+    .p-83-2 {
+      transform-origin: center;
+      animation: p-anim-83-2 48.00s linear infinite;
+    }
+    .p-84-0 {
+      transform-origin: center;
+      animation: p-anim-84-0 48.00s linear infinite;
+    }
+    .p-84-1 {
+      transform-origin: center;
+      animation: p-anim-84-1 48.00s linear infinite;
+    }
+    .p-84-2 {
+      transform-origin: center;
+      animation: p-anim-84-2 48.00s linear infinite;
+    }
+    .p-85-0 {
+      transform-origin: center;
+      animation: p-anim-85-0 48.00s linear infinite;
+    }
+    .p-85-1 {
+      transform-origin: center;
+      animation: p-anim-85-1 48.00s linear infinite;
+    }
+    .p-85-2 {
+      transform-origin: center;
+      animation: p-anim-85-2 48.00s linear infinite;
+    }
+    .p-86-0 {
+      transform-origin: center;
+      animation: p-anim-86-0 48.00s linear infinite;
+    }
+    .p-86-1 {
+      transform-origin: center;
+      animation: p-anim-86-1 48.00s linear infinite;
+    }
+    .p-86-2 {
+      transform-origin: center;
+      animation: p-anim-86-2 48.00s linear infinite;
+    }
+    .p-87-0 {
+      transform-origin: center;
+      animation: p-anim-87-0 48.00s linear infinite;
+    }
+    .p-87-1 {
+      transform-origin: center;
+      animation: p-anim-87-1 48.00s linear infinite;
+    }
+    .p-87-2 {
+      transform-origin: center;
+      animation: p-anim-87-2 48.00s linear infinite;
+    }
+    .p-88-0 {
+      transform-origin: center;
+      animation: p-anim-88-0 48.00s linear infinite;
+    }
+    .p-88-1 {
+      transform-origin: center;
+      animation: p-anim-88-1 48.00s linear infinite;
+    }
+    .p-88-2 {
+      transform-origin: center;
+      animation: p-anim-88-2 48.00s linear infinite;
+    }
+    .p-89-0 {
+      transform-origin: center;
+      animation: p-anim-89-0 48.00s linear infinite;
+    }
+    .p-89-1 {
+      transform-origin: center;
+      animation: p-anim-89-1 48.00s linear infinite;
+    }
+    .p-89-2 {
+      transform-origin: center;
+      animation: p-anim-89-2 48.00s linear infinite;
+    }
+    .p-90-0 {
+      transform-origin: center;
+      animation: p-anim-90-0 48.00s linear infinite;
+    }
+    .p-90-1 {
+      transform-origin: center;
+      animation: p-anim-90-1 48.00s linear infinite;
+    }
+    .p-90-2 {
+      transform-origin: center;
+      animation: p-anim-90-2 48.00s linear infinite;
+    }
+    .p-91-0 {
+      transform-origin: center;
+      animation: p-anim-91-0 48.00s linear infinite;
+    }
+    .p-91-1 {
+      transform-origin: center;
+      animation: p-anim-91-1 48.00s linear infinite;
+    }
+    .p-91-2 {
+      transform-origin: center;
+      animation: p-anim-91-2 48.00s linear infinite;
+    }
+    .p-92-0 {
+      transform-origin: center;
+      animation: p-anim-92-0 48.00s linear infinite;
+    }
+    .p-92-1 {
+      transform-origin: center;
+      animation: p-anim-92-1 48.00s linear infinite;
+    }
+    .p-92-2 {
+      transform-origin: center;
+      animation: p-anim-92-2 48.00s linear infinite;
+    }
+    .p-93-0 {
+      transform-origin: center;
+      animation: p-anim-93-0 48.00s linear infinite;
+    }
+    .p-93-1 {
+      transform-origin: center;
+      animation: p-anim-93-1 48.00s linear infinite;
+    }
+    .p-93-2 {
+      transform-origin: center;
+      animation: p-anim-93-2 48.00s linear infinite;
+    }
+    .p-94-0 {
+      transform-origin: center;
+      animation: p-anim-94-0 48.00s linear infinite;
+    }
+    .p-94-1 {
+      transform-origin: center;
+      animation: p-anim-94-1 48.00s linear infinite;
+    }
+    .p-94-2 {
+      transform-origin: center;
+      animation: p-anim-94-2 48.00s linear infinite;
+    }
+    .p-95-0 {
+      transform-origin: center;
+      animation: p-anim-95-0 48.00s linear infinite;
+    }
+    .p-95-1 {
+      transform-origin: center;
+      animation: p-anim-95-1 48.00s linear infinite;
+    }
+    .p-95-2 {
+      transform-origin: center;
+      animation: p-anim-95-2 48.00s linear infinite;
+    }
+    .p-96-0 {
+      transform-origin: center;
+      animation: p-anim-96-0 48.00s linear infinite;
+    }
+    .p-96-1 {
+      transform-origin: center;
+      animation: p-anim-96-1 48.00s linear infinite;
+    }
+    .p-96-2 {
+      transform-origin: center;
+      animation: p-anim-96-2 48.00s linear infinite;
+    }
+    .p-97-0 {
+      transform-origin: center;
+      animation: p-anim-97-0 48.00s linear infinite;
+    }
+    .p-97-1 {
+      transform-origin: center;
+      animation: p-anim-97-1 48.00s linear infinite;
+    }
+    .p-97-2 {
+      transform-origin: center;
+      animation: p-anim-97-2 48.00s linear infinite;
+    }
+    .p-98-0 {
+      transform-origin: center;
+      animation: p-anim-98-0 48.00s linear infinite;
+    }
+    .p-98-1 {
+      transform-origin: center;
+      animation: p-anim-98-1 48.00s linear infinite;
+    }
+    .p-98-2 {
+      transform-origin: center;
+      animation: p-anim-98-2 48.00s linear infinite;
+    }
+    .p-99-0 {
+      transform-origin: center;
+      animation: p-anim-99-0 48.00s linear infinite;
+    }
+    .p-99-1 {
+      transform-origin: center;
+      animation: p-anim-99-1 48.00s linear infinite;
+    }
+    .p-99-2 {
+      transform-origin: center;
+      animation: p-anim-99-2 48.00s linear infinite;
+    }
+    .p-100-0 {
+      transform-origin: center;
+      animation: p-anim-100-0 48.00s linear infinite;
+    }
+    .p-100-1 {
+      transform-origin: center;
+      animation: p-anim-100-1 48.00s linear infinite;
+    }
+    .p-100-2 {
+      transform-origin: center;
+      animation: p-anim-100-2 48.00s linear infinite;
+    }
+    .p-101-0 {
+      transform-origin: center;
+      animation: p-anim-101-0 48.00s linear infinite;
+    }
+    .p-101-1 {
+      transform-origin: center;
+      animation: p-anim-101-1 48.00s linear infinite;
+    }
+    .p-101-2 {
+      transform-origin: center;
+      animation: p-anim-101-2 48.00s linear infinite;
+    }
+    .p-102-0 {
+      transform-origin: center;
+      animation: p-anim-102-0 48.00s linear infinite;
+    }
+    .p-102-1 {
+      transform-origin: center;
+      animation: p-anim-102-1 48.00s linear infinite;
+    }
+    .p-102-2 {
+      transform-origin: center;
+      animation: p-anim-102-2 48.00s linear infinite;
+    }
+    .p-103-0 {
+      transform-origin: center;
+      animation: p-anim-103-0 48.00s linear infinite;
+    }
+    .p-103-1 {
+      transform-origin: center;
+      animation: p-anim-103-1 48.00s linear infinite;
+    }
+    .p-103-2 {
+      transform-origin: center;
+      animation: p-anim-103-2 48.00s linear infinite;
+    }
+    .p-104-0 {
+      transform-origin: center;
+      animation: p-anim-104-0 48.00s linear infinite;
+    }
+    .p-104-1 {
+      transform-origin: center;
+      animation: p-anim-104-1 48.00s linear infinite;
+    }
+    .p-104-2 {
+      transform-origin: center;
+      animation: p-anim-104-2 48.00s linear infinite;
+    }
+    .p-105-0 {
+      transform-origin: center;
+      animation: p-anim-105-0 48.00s linear infinite;
+    }
+    .p-105-1 {
+      transform-origin: center;
+      animation: p-anim-105-1 48.00s linear infinite;
+    }
+    .p-105-2 {
+      transform-origin: center;
+      animation: p-anim-105-2 48.00s linear infinite;
+    }
+    .p-106-0 {
+      transform-origin: center;
+      animation: p-anim-106-0 48.00s linear infinite;
+    }
+    .p-106-1 {
+      transform-origin: center;
+      animation: p-anim-106-1 48.00s linear infinite;
+    }
+    .p-106-2 {
+      transform-origin: center;
+      animation: p-anim-106-2 48.00s linear infinite;
+    }
+    .p-107-0 {
+      transform-origin: center;
+      animation: p-anim-107-0 48.00s linear infinite;
+    }
+    .p-107-1 {
+      transform-origin: center;
+      animation: p-anim-107-1 48.00s linear infinite;
+    }
+    .p-107-2 {
+      transform-origin: center;
+      animation: p-anim-107-2 48.00s linear infinite;
+    }
+    .p-108-0 {
+      transform-origin: center;
+      animation: p-anim-108-0 48.00s linear infinite;
+    }
+    .p-108-1 {
+      transform-origin: center;
+      animation: p-anim-108-1 48.00s linear infinite;
+    }
+    .p-108-2 {
+      transform-origin: center;
+      animation: p-anim-108-2 48.00s linear infinite;
+    }
+    .p-109-0 {
+      transform-origin: center;
+      animation: p-anim-109-0 48.00s linear infinite;
+    }
+    .p-109-1 {
+      transform-origin: center;
+      animation: p-anim-109-1 48.00s linear infinite;
+    }
+    .p-109-2 {
+      transform-origin: center;
+      animation: p-anim-109-2 48.00s linear infinite;
+    }
+    .p-110-0 {
+      transform-origin: center;
+      animation: p-anim-110-0 48.00s linear infinite;
+    }
+    .p-110-1 {
+      transform-origin: center;
+      animation: p-anim-110-1 48.00s linear infinite;
+    }
+    .p-110-2 {
+      transform-origin: center;
+      animation: p-anim-110-2 48.00s linear infinite;
+    }
+    .p-111-0 {
+      transform-origin: center;
+      animation: p-anim-111-0 48.00s linear infinite;
+    }
+    .p-111-1 {
+      transform-origin: center;
+      animation: p-anim-111-1 48.00s linear infinite;
+    }
+    .p-111-2 {
+      transform-origin: center;
+      animation: p-anim-111-2 48.00s linear infinite;
+    }
+    .p-112-0 {
+      transform-origin: center;
+      animation: p-anim-112-0 48.00s linear infinite;
+    }
+    .p-112-1 {
+      transform-origin: center;
+      animation: p-anim-112-1 48.00s linear infinite;
+    }
+    .p-112-2 {
+      transform-origin: center;
+      animation: p-anim-112-2 48.00s linear infinite;
+    }
+    .p-113-0 {
+      transform-origin: center;
+      animation: p-anim-113-0 48.00s linear infinite;
+    }
+    .p-113-1 {
+      transform-origin: center;
+      animation: p-anim-113-1 48.00s linear infinite;
+    }
+    .p-113-2 {
+      transform-origin: center;
+      animation: p-anim-113-2 48.00s linear infinite;
+    }
+    .p-114-0 {
+      transform-origin: center;
+      animation: p-anim-114-0 48.00s linear infinite;
+    }
+    .p-114-1 {
+      transform-origin: center;
+      animation: p-anim-114-1 48.00s linear infinite;
+    }
+    .p-114-2 {
+      transform-origin: center;
+      animation: p-anim-114-2 48.00s linear infinite;
+    }
+    .p-115-0 {
+      transform-origin: center;
+      animation: p-anim-115-0 48.00s linear infinite;
+    }
+    .p-115-1 {
+      transform-origin: center;
+      animation: p-anim-115-1 48.00s linear infinite;
+    }
+    .p-115-2 {
+      transform-origin: center;
+      animation: p-anim-115-2 48.00s linear infinite;
+    }
+    .p-116-0 {
+      transform-origin: center;
+      animation: p-anim-116-0 48.00s linear infinite;
+    }
+    .p-116-1 {
+      transform-origin: center;
+      animation: p-anim-116-1 48.00s linear infinite;
+    }
+    .p-116-2 {
+      transform-origin: center;
+      animation: p-anim-116-2 48.00s linear infinite;
+    }
+    .p-117-0 {
+      transform-origin: center;
+      animation: p-anim-117-0 48.00s linear infinite;
+    }
+    .p-117-1 {
+      transform-origin: center;
+      animation: p-anim-117-1 48.00s linear infinite;
+    }
+    .p-117-2 {
+      transform-origin: center;
+      animation: p-anim-117-2 48.00s linear infinite;
+    }
+    .p-118-0 {
+      transform-origin: center;
+      animation: p-anim-118-0 48.00s linear infinite;
+    }
+    .p-118-1 {
+      transform-origin: center;
+      animation: p-anim-118-1 48.00s linear infinite;
+    }
+    .p-118-2 {
+      transform-origin: center;
+      animation: p-anim-118-2 48.00s linear infinite;
+    }
+    .p-119-0 {
+      transform-origin: center;
+      animation: p-anim-119-0 48.00s linear infinite;
+    }
+    .p-119-1 {
+      transform-origin: center;
+      animation: p-anim-119-1 48.00s linear infinite;
+    }
+    .p-119-2 {
+      transform-origin: center;
+      animation: p-anim-119-2 48.00s linear infinite;
+    }
+    .p-120-0 {
+      transform-origin: center;
+      animation: p-anim-120-0 48.00s linear infinite;
+    }
+    .p-120-1 {
+      transform-origin: center;
+      animation: p-anim-120-1 48.00s linear infinite;
+    }
+    .p-120-2 {
+      transform-origin: center;
+      animation: p-anim-120-2 48.00s linear infinite;
+    }
+    .p-121-0 {
+      transform-origin: center;
+      animation: p-anim-121-0 48.00s linear infinite;
+    }
+    .p-121-1 {
+      transform-origin: center;
+      animation: p-anim-121-1 48.00s linear infinite;
+    }
+    .p-121-2 {
+      transform-origin: center;
+      animation: p-anim-121-2 48.00s linear infinite;
+    }
+    .p-122-0 {
+      transform-origin: center;
+      animation: p-anim-122-0 48.00s linear infinite;
+    }
+    .p-122-1 {
+      transform-origin: center;
+      animation: p-anim-122-1 48.00s linear infinite;
+    }
+    .p-122-2 {
+      transform-origin: center;
+      animation: p-anim-122-2 48.00s linear infinite;
+    }
+    .p-123-0 {
+      transform-origin: center;
+      animation: p-anim-123-0 48.00s linear infinite;
+    }
+    .p-123-1 {
+      transform-origin: center;
+      animation: p-anim-123-1 48.00s linear infinite;
+    }
+    .p-123-2 {
+      transform-origin: center;
+      animation: p-anim-123-2 48.00s linear infinite;
+    }
+    .p-124-0 {
+      transform-origin: center;
+      animation: p-anim-124-0 48.00s linear infinite;
+    }
+    .p-124-1 {
+      transform-origin: center;
+      animation: p-anim-124-1 48.00s linear infinite;
+    }
+    .p-124-2 {
+      transform-origin: center;
+      animation: p-anim-124-2 48.00s linear infinite;
+    }
+    .p-125-0 {
+      transform-origin: center;
+      animation: p-anim-125-0 48.00s linear infinite;
+    }
+    .p-125-1 {
+      transform-origin: center;
+      animation: p-anim-125-1 48.00s linear infinite;
+    }
+    .p-125-2 {
+      transform-origin: center;
+      animation: p-anim-125-2 48.00s linear infinite;
+    }
+    .p-126-0 {
+      transform-origin: center;
+      animation: p-anim-126-0 48.00s linear infinite;
+    }
+    .p-126-1 {
+      transform-origin: center;
+      animation: p-anim-126-1 48.00s linear infinite;
+    }
+    .p-126-2 {
+      transform-origin: center;
+      animation: p-anim-126-2 48.00s linear infinite;
+    }
+    .p-127-0 {
+      transform-origin: center;
+      animation: p-anim-127-0 48.00s linear infinite;
+    }
+    .p-127-1 {
+      transform-origin: center;
+      animation: p-anim-127-1 48.00s linear infinite;
+    }
+    .p-127-2 {
+      transform-origin: center;
+      animation: p-anim-127-2 48.00s linear infinite;
+    }
+    .p-128-0 {
+      transform-origin: center;
+      animation: p-anim-128-0 48.00s linear infinite;
+    }
+    .p-128-1 {
+      transform-origin: center;
+      animation: p-anim-128-1 48.00s linear infinite;
+    }
+    .p-128-2 {
+      transform-origin: center;
+      animation: p-anim-128-2 48.00s linear infinite;
+    }
+    .p-129-0 {
+      transform-origin: center;
+      animation: p-anim-129-0 48.00s linear infinite;
+    }
+    .p-129-1 {
+      transform-origin: center;
+      animation: p-anim-129-1 48.00s linear infinite;
+    }
+    .p-129-2 {
+      transform-origin: center;
+      animation: p-anim-129-2 48.00s linear infinite;
+    }
+    .p-130-0 {
+      transform-origin: center;
+      animation: p-anim-130-0 48.00s linear infinite;
+    }
+    .p-130-1 {
+      transform-origin: center;
+      animation: p-anim-130-1 48.00s linear infinite;
+    }
+    .p-130-2 {
+      transform-origin: center;
+      animation: p-anim-130-2 48.00s linear infinite;
+    }
+    .p-131-0 {
+      transform-origin: center;
+      animation: p-anim-131-0 48.00s linear infinite;
+    }
+    .p-131-1 {
+      transform-origin: center;
+      animation: p-anim-131-1 48.00s linear infinite;
+    }
+    .p-131-2 {
+      transform-origin: center;
+      animation: p-anim-131-2 48.00s linear infinite;
+    }
+    .p-132-0 {
+      transform-origin: center;
+      animation: p-anim-132-0 48.00s linear infinite;
+    }
+    .p-132-1 {
+      transform-origin: center;
+      animation: p-anim-132-1 48.00s linear infinite;
+    }
+    .p-132-2 {
+      transform-origin: center;
+      animation: p-anim-132-2 48.00s linear infinite;
+    }
+    .p-133-0 {
+      transform-origin: center;
+      animation: p-anim-133-0 48.00s linear infinite;
+    }
+    .p-133-1 {
+      transform-origin: center;
+      animation: p-anim-133-1 48.00s linear infinite;
+    }
+    .p-133-2 {
+      transform-origin: center;
+      animation: p-anim-133-2 48.00s linear infinite;
+    }
+    .p-134-0 {
+      transform-origin: center;
+      animation: p-anim-134-0 48.00s linear infinite;
+    }
+    .p-134-1 {
+      transform-origin: center;
+      animation: p-anim-134-1 48.00s linear infinite;
+    }
+    .p-134-2 {
+      transform-origin: center;
+      animation: p-anim-134-2 48.00s linear infinite;
+    }
+    .p-135-0 {
+      transform-origin: center;
+      animation: p-anim-135-0 48.00s linear infinite;
+    }
+    .p-135-1 {
+      transform-origin: center;
+      animation: p-anim-135-1 48.00s linear infinite;
+    }
+    .p-135-2 {
+      transform-origin: center;
+      animation: p-anim-135-2 48.00s linear infinite;
+    }
+    .p-136-0 {
+      transform-origin: center;
+      animation: p-anim-136-0 48.00s linear infinite;
+    }
+    .p-136-1 {
+      transform-origin: center;
+      animation: p-anim-136-1 48.00s linear infinite;
+    }
+    .p-136-2 {
+      transform-origin: center;
+      animation: p-anim-136-2 48.00s linear infinite;
+    }
+    .p-137-0 {
+      transform-origin: center;
+      animation: p-anim-137-0 48.00s linear infinite;
+    }
+    .p-137-1 {
+      transform-origin: center;
+      animation: p-anim-137-1 48.00s linear infinite;
+    }
+    .p-137-2 {
+      transform-origin: center;
+      animation: p-anim-137-2 48.00s linear infinite;
+    }
+    .p-138-0 {
+      transform-origin: center;
+      animation: p-anim-138-0 48.00s linear infinite;
+    }
+    .p-138-1 {
+      transform-origin: center;
+      animation: p-anim-138-1 48.00s linear infinite;
+    }
+    .p-138-2 {
+      transform-origin: center;
+      animation: p-anim-138-2 48.00s linear infinite;
+    }
+    .p-139-0 {
+      transform-origin: center;
+      animation: p-anim-139-0 48.00s linear infinite;
+    }
+    .p-139-1 {
+      transform-origin: center;
+      animation: p-anim-139-1 48.00s linear infinite;
+    }
+    .p-139-2 {
+      transform-origin: center;
+      animation: p-anim-139-2 48.00s linear infinite;
+    }
+    .p-140-0 {
+      transform-origin: center;
+      animation: p-anim-140-0 48.00s linear infinite;
+    }
+    .p-140-1 {
+      transform-origin: center;
+      animation: p-anim-140-1 48.00s linear infinite;
+    }
+    .p-140-2 {
+      transform-origin: center;
+      animation: p-anim-140-2 48.00s linear infinite;
+    }
+    .p-141-0 {
+      transform-origin: center;
+      animation: p-anim-141-0 48.00s linear infinite;
+    }
+    .p-141-1 {
+      transform-origin: center;
+      animation: p-anim-141-1 48.00s linear infinite;
+    }
+    .p-141-2 {
+      transform-origin: center;
+      animation: p-anim-141-2 48.00s linear infinite;
+    }
+    .p-142-0 {
+      transform-origin: center;
+      animation: p-anim-142-0 48.00s linear infinite;
+    }
+    .p-142-1 {
+      transform-origin: center;
+      animation: p-anim-142-1 48.00s linear infinite;
+    }
+    .p-142-2 {
+      transform-origin: center;
+      animation: p-anim-142-2 48.00s linear infinite;
+    }
+    .p-143-0 {
+      transform-origin: center;
+      animation: p-anim-143-0 48.00s linear infinite;
+    }
+    .p-143-1 {
+      transform-origin: center;
+      animation: p-anim-143-1 48.00s linear infinite;
+    }
+    .p-143-2 {
+      transform-origin: center;
+      animation: p-anim-143-2 48.00s linear infinite;
+    }
+    .p-144-0 {
+      transform-origin: center;
+      animation: p-anim-144-0 48.00s linear infinite;
+    }
+    .p-144-1 {
+      transform-origin: center;
+      animation: p-anim-144-1 48.00s linear infinite;
+    }
+    .p-144-2 {
+      transform-origin: center;
+      animation: p-anim-144-2 48.00s linear infinite;
+    }
+    .p-145-0 {
+      transform-origin: center;
+      animation: p-anim-145-0 48.00s linear infinite;
+    }
+    .p-145-1 {
+      transform-origin: center;
+      animation: p-anim-145-1 48.00s linear infinite;
+    }
+    .p-145-2 {
+      transform-origin: center;
+      animation: p-anim-145-2 48.00s linear infinite;
+    }
+    .p-146-0 {
+      transform-origin: center;
+      animation: p-anim-146-0 48.00s linear infinite;
+    }
+    .p-146-1 {
+      transform-origin: center;
+      animation: p-anim-146-1 48.00s linear infinite;
+    }
+    .p-146-2 {
+      transform-origin: center;
+      animation: p-anim-146-2 48.00s linear infinite;
+    }
+    .p-147-0 {
+      transform-origin: center;
+      animation: p-anim-147-0 48.00s linear infinite;
+    }
+    .p-147-1 {
+      transform-origin: center;
+      animation: p-anim-147-1 48.00s linear infinite;
+    }
+    .p-147-2 {
+      transform-origin: center;
+      animation: p-anim-147-2 48.00s linear infinite;
+    }
+    .p-148-0 {
+      transform-origin: center;
+      animation: p-anim-148-0 48.00s linear infinite;
+    }
+    .p-148-1 {
+      transform-origin: center;
+      animation: p-anim-148-1 48.00s linear infinite;
+    }
+    .p-148-2 {
+      transform-origin: center;
+      animation: p-anim-148-2 48.00s linear infinite;
+    }
+    .p-149-0 {
+      transform-origin: center;
+      animation: p-anim-149-0 48.00s linear infinite;
+    }
+    .p-149-1 {
+      transform-origin: center;
+      animation: p-anim-149-1 48.00s linear infinite;
+    }
+    .p-149-2 {
+      transform-origin: center;
+      animation: p-anim-149-2 48.00s linear infinite;
+    }
+    .p-150-0 {
+      transform-origin: center;
+      animation: p-anim-150-0 48.00s linear infinite;
+    }
+    .p-150-1 {
+      transform-origin: center;
+      animation: p-anim-150-1 48.00s linear infinite;
+    }
+    .p-150-2 {
+      transform-origin: center;
+      animation: p-anim-150-2 48.00s linear infinite;
+    }
+    .p-151-0 {
+      transform-origin: center;
+      animation: p-anim-151-0 48.00s linear infinite;
+    }
+    .p-151-1 {
+      transform-origin: center;
+      animation: p-anim-151-1 48.00s linear infinite;
+    }
+    .p-151-2 {
+      transform-origin: center;
+      animation: p-anim-151-2 48.00s linear infinite;
+    }
+    .p-152-0 {
+      transform-origin: center;
+      animation: p-anim-152-0 48.00s linear infinite;
+    }
+    .p-152-1 {
+      transform-origin: center;
+      animation: p-anim-152-1 48.00s linear infinite;
+    }
+    .p-152-2 {
+      transform-origin: center;
+      animation: p-anim-152-2 48.00s linear infinite;
+    }
+    .p-153-0 {
+      transform-origin: center;
+      animation: p-anim-153-0 48.00s linear infinite;
+    }
+    .p-153-1 {
+      transform-origin: center;
+      animation: p-anim-153-1 48.00s linear infinite;
+    }
+    .p-153-2 {
+      transform-origin: center;
+      animation: p-anim-153-2 48.00s linear infinite;
+    }
+    .p-154-0 {
+      transform-origin: center;
+      animation: p-anim-154-0 48.00s linear infinite;
+    }
+    .p-154-1 {
+      transform-origin: center;
+      animation: p-anim-154-1 48.00s linear infinite;
+    }
+    .p-154-2 {
+      transform-origin: center;
+      animation: p-anim-154-2 48.00s linear infinite;
+    }
+    .p-155-0 {
+      transform-origin: center;
+      animation: p-anim-155-0 48.00s linear infinite;
+    }
+    .p-155-1 {
+      transform-origin: center;
+      animation: p-anim-155-1 48.00s linear infinite;
+    }
+    .p-155-2 {
+      transform-origin: center;
+      animation: p-anim-155-2 48.00s linear infinite;
+    }
+    .p-156-0 {
+      transform-origin: center;
+      animation: p-anim-156-0 48.00s linear infinite;
+    }
+    .p-156-1 {
+      transform-origin: center;
+      animation: p-anim-156-1 48.00s linear infinite;
+    }
+    .p-156-2 {
+      transform-origin: center;
+      animation: p-anim-156-2 48.00s linear infinite;
+    }
+    .p-157-0 {
+      transform-origin: center;
+      animation: p-anim-157-0 48.00s linear infinite;
+    }
+    .p-157-1 {
+      transform-origin: center;
+      animation: p-anim-157-1 48.00s linear infinite;
+    }
+    .p-157-2 {
+      transform-origin: center;
+      animation: p-anim-157-2 48.00s linear infinite;
+    }
+    .p-158-0 {
+      transform-origin: center;
+      animation: p-anim-158-0 48.00s linear infinite;
+    }
+    .p-158-1 {
+      transform-origin: center;
+      animation: p-anim-158-1 48.00s linear infinite;
+    }
+    .p-158-2 {
+      transform-origin: center;
+      animation: p-anim-158-2 48.00s linear infinite;
+    }
+    .p-159-0 {
+      transform-origin: center;
+      animation: p-anim-159-0 48.00s linear infinite;
+    }
+    .p-159-1 {
+      transform-origin: center;
+      animation: p-anim-159-1 48.00s linear infinite;
+    }
+    .p-159-2 {
+      transform-origin: center;
+      animation: p-anim-159-2 48.00s linear infinite;
+    }
+    .p-160-0 {
+      transform-origin: center;
+      animation: p-anim-160-0 48.00s linear infinite;
+    }
+    .p-160-1 {
+      transform-origin: center;
+      animation: p-anim-160-1 48.00s linear infinite;
+    }
+    .p-160-2 {
+      transform-origin: center;
+      animation: p-anim-160-2 48.00s linear infinite;
+    }
+    .p-161-0 {
+      transform-origin: center;
+      animation: p-anim-161-0 48.00s linear infinite;
+    }
+    .p-161-1 {
+      transform-origin: center;
+      animation: p-anim-161-1 48.00s linear infinite;
+    }
+    .p-161-2 {
+      transform-origin: center;
+      animation: p-anim-161-2 48.00s linear infinite;
+    }
+    .p-162-0 {
+      transform-origin: center;
+      animation: p-anim-162-0 48.00s linear infinite;
+    }
+    .p-162-1 {
+      transform-origin: center;
+      animation: p-anim-162-1 48.00s linear infinite;
+    }
+    .p-162-2 {
+      transform-origin: center;
+      animation: p-anim-162-2 48.00s linear infinite;
+    }
+    .p-163-0 {
+      transform-origin: center;
+      animation: p-anim-163-0 48.00s linear infinite;
+    }
+    .p-163-1 {
+      transform-origin: center;
+      animation: p-anim-163-1 48.00s linear infinite;
+    }
+    .p-163-2 {
+      transform-origin: center;
+      animation: p-anim-163-2 48.00s linear infinite;
+    }
+    .p-164-0 {
+      transform-origin: center;
+      animation: p-anim-164-0 48.00s linear infinite;
+    }
+    .p-164-1 {
+      transform-origin: center;
+      animation: p-anim-164-1 48.00s linear infinite;
+    }
+    .p-164-2 {
+      transform-origin: center;
+      animation: p-anim-164-2 48.00s linear infinite;
+    }
+    .p-165-0 {
+      transform-origin: center;
+      animation: p-anim-165-0 48.00s linear infinite;
+    }
+    .p-165-1 {
+      transform-origin: center;
+      animation: p-anim-165-1 48.00s linear infinite;
+    }
+    .p-165-2 {
+      transform-origin: center;
+      animation: p-anim-165-2 48.00s linear infinite;
+    }
+    .p-166-0 {
+      transform-origin: center;
+      animation: p-anim-166-0 48.00s linear infinite;
+    }
+    .p-166-1 {
+      transform-origin: center;
+      animation: p-anim-166-1 48.00s linear infinite;
+    }
+    .p-166-2 {
+      transform-origin: center;
+      animation: p-anim-166-2 48.00s linear infinite;
+    }
+    .p-167-0 {
+      transform-origin: center;
+      animation: p-anim-167-0 48.00s linear infinite;
+    }
+    .p-167-1 {
+      transform-origin: center;
+      animation: p-anim-167-1 48.00s linear infinite;
+    }
+    .p-167-2 {
+      transform-origin: center;
+      animation: p-anim-167-2 48.00s linear infinite;
+    }
+    .p-168-0 {
+      transform-origin: center;
+      animation: p-anim-168-0 48.00s linear infinite;
+    }
+    .p-168-1 {
+      transform-origin: center;
+      animation: p-anim-168-1 48.00s linear infinite;
+    }
+    .p-168-2 {
+      transform-origin: center;
+      animation: p-anim-168-2 48.00s linear infinite;
+    }
+    
+    #snake-head circle, #snake-head ellipse {
+      transform-origin: 5px 5px;
+      animation: eye-blink 4s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Card Background -->
+  <rect width="664" height="172" class="card-bg" />
+
+  <!-- Header Section -->
+  <g transform="translate(15, 20)">
+    <!-- Logo / Brand -->
+    <text x="0" y="8" class="card-title">GitSnake Pro</text>
+    <text x="0" y="22" class="card-subtitle">@MarutiNandan2796 • 1,192 Contributions</text>
+  </g>
+
+  <!-- Main Contribution Board -->
+  <g transform="translate(15, 55)">
+    <!-- Grid Cells -->
+    <g id="contribution-grid">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="0" y="12" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-0-1" />
+      <rect x="0" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-0-2" />
+      <rect x="0" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="0" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="0" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="0" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="12" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="12" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="12" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-1-2" />
+      <rect x="12" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-1-3" />
+      <rect x="12" y="48" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-1-4" />
+      <rect x="12" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="12" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="24" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="24" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="24" y="24" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-2-2" />
+      <rect x="24" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-2-3" />
+      <rect x="24" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-2-4" />
+      <rect x="24" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="24" y="72" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-2-6" />
+      <rect x="36" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-3-0" />
+      <rect x="36" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="36" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-3-2" />
+      <rect x="36" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-3-3" />
+      <rect x="36" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="36" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-3-5" />
+      <rect x="36" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="48" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="48" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="48" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-4-2" />
+      <rect x="48" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-4-3" />
+      <rect x="48" y="48" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-4-4" />
+      <rect x="48" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="48" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="60" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="60" y="12" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-5-1" />
+      <rect x="60" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-5-2" />
+      <rect x="60" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="60" y="48" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-5-4" />
+      <rect x="60" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="60" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="72" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="72" y="12" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-6-1" />
+      <rect x="72" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="72" y="36" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-6-3" />
+      <rect x="72" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-6-4" />
+      <rect x="72" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="72" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-6-6" />
+      <rect x="84" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="84" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="84" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="84" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-7-3" />
+      <rect x="84" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="84" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="84" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="96" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="96" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="96" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="96" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-8-3" />
+      <rect x="96" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-8-4" />
+      <rect x="96" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="96" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="108" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-9-0" />
+      <rect x="108" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="108" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-9-2" />
+      <rect x="108" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-9-3" />
+      <rect x="108" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="108" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="108" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="120" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-10-0" />
+      <rect x="120" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-10-1" />
+      <rect x="120" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-10-2" />
+      <rect x="120" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-10-3" />
+      <rect x="120" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="120" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="120" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="132" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="132" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="132" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="132" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-11-3" />
+      <rect x="132" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="132" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="132" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-11-6" />
+      <rect x="144" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="144" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-12-1" />
+      <rect x="144" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-12-2" />
+      <rect x="144" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-12-3" />
+      <rect x="144" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="144" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-12-5" />
+      <rect x="144" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="156" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-13-0" />
+      <rect x="156" y="12" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-13-1" />
+      <rect x="156" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-13-2" />
+      <rect x="156" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-13-3" />
+      <rect x="156" y="48" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-13-4" />
+      <rect x="156" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-13-5" />
+      <rect x="156" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="168" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="168" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-14-1" />
+      <rect x="168" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-14-2" />
+      <rect x="168" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-14-3" />
+      <rect x="168" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="168" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="168" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="180" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="180" y="12" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-15-1" />
+      <rect x="180" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-15-2" />
+      <rect x="180" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-15-3" />
+      <rect x="180" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="180" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-15-5" />
+      <rect x="180" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="192" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="192" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="192" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-16-2" />
+      <rect x="192" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-16-3" />
+      <rect x="192" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-16-4" />
+      <rect x="192" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="192" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="204" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="204" y="12" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-17-1" />
+      <rect x="204" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="204" y="36" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-17-3" />
+      <rect x="204" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="204" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="204" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="216" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-18-0" />
+      <rect x="216" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="216" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="216" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-18-3" />
+      <rect x="216" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="216" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-18-5" />
+      <rect x="216" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="228" y="0" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-19-0" />
+      <rect x="228" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-19-1" />
+      <rect x="228" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-19-2" />
+      <rect x="228" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-19-3" />
+      <rect x="228" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="228" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="228" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="240" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="240" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="240" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="240" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-20-3" />
+      <rect x="240" y="48" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-20-4" />
+      <rect x="240" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-20-5" />
+      <rect x="240" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="252" y="0" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-21-0" />
+      <rect x="252" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="252" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-21-2" />
+      <rect x="252" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="252" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="252" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-21-5" />
+      <rect x="252" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="264" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="264" y="12" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-22-1" />
+      <rect x="264" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-22-2" />
+      <rect x="264" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="264" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="264" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="264" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-22-6" />
+      <rect x="276" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-23-0" />
+      <rect x="276" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="276" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-23-2" />
+      <rect x="276" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-23-3" />
+      <rect x="276" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-23-4" />
+      <rect x="276" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="276" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-23-6" />
+      <rect x="288" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="288" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="288" y="24" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-24-2" />
+      <rect x="288" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="288" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="288" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="288" y="72" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-24-6" />
+      <rect x="300" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="300" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="300" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-25-2" />
+      <rect x="300" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-25-3" />
+      <rect x="300" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="300" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="300" y="72" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-25-6" />
+      <rect x="312" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-26-0" />
+      <rect x="312" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="312" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-26-2" />
+      <rect x="312" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="312" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="312" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-26-5" />
+      <rect x="312" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="324" y="0" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-27-0" />
+      <rect x="324" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="324" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-27-2" />
+      <rect x="324" y="36" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-27-3" />
+      <rect x="324" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="324" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="324" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="336" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="336" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="336" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="336" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-28-3" />
+      <rect x="336" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="336" y="60" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-28-5" />
+      <rect x="336" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="348" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="348" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="348" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="348" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="348" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="348" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="348" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="360" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="360" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-30-1" />
+      <rect x="360" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="360" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-30-3" />
+      <rect x="360" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="360" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-30-5" />
+      <rect x="360" y="72" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-30-6" />
+      <rect x="372" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="372" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="372" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="372" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-31-3" />
+      <rect x="372" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="372" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-31-5" />
+      <rect x="372" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="384" y="0" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-32-0" />
+      <rect x="384" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="384" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="384" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-32-3" />
+      <rect x="384" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="384" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="384" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-32-6" />
+      <rect x="396" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="396" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-33-1" />
+      <rect x="396" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-33-2" />
+      <rect x="396" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-33-3" />
+      <rect x="396" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="396" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-33-5" />
+      <rect x="396" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="408" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="408" y="12" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-34-1" />
+      <rect x="408" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-34-2" />
+      <rect x="408" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="408" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-34-4" />
+      <rect x="408" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="408" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="420" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="420" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="420" y="24" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-35-2" />
+      <rect x="420" y="36" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-35-3" />
+      <rect x="420" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-35-4" />
+      <rect x="420" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-35-5" />
+      <rect x="420" y="72" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-35-6" />
+      <rect x="432" y="0" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-36-0" />
+      <rect x="432" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="432" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-36-2" />
+      <rect x="432" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-36-3" />
+      <rect x="432" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="432" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="432" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="444" y="0" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-37-0" />
+      <rect x="444" y="12" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-37-1" />
+      <rect x="444" y="24" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-37-2" />
+      <rect x="444" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-37-3" />
+      <rect x="444" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="444" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="444" y="72" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-37-6" />
+      <rect x="456" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="456" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="456" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-38-2" />
+      <rect x="456" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-38-3" />
+      <rect x="456" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="456" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="456" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="468" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="468" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="468" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="468" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-39-3" />
+      <rect x="468" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="468" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-39-5" />
+      <rect x="468" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="480" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-40-0" />
+      <rect x="480" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-40-1" />
+      <rect x="480" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="480" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-40-3" />
+      <rect x="480" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-40-4" />
+      <rect x="480" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-40-5" />
+      <rect x="480" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="492" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="492" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-41-1" />
+      <rect x="492" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-41-2" />
+      <rect x="492" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-41-3" />
+      <rect x="492" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-41-4" />
+      <rect x="492" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="492" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="504" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="504" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="504" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-42-2" />
+      <rect x="504" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-42-3" />
+      <rect x="504" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-42-4" />
+      <rect x="504" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-42-5" />
+      <rect x="504" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-42-6" />
+      <rect x="516" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="516" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="516" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="516" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-43-3" />
+      <rect x="516" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="516" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-43-5" />
+      <rect x="516" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="528" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="528" y="12" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-44-1" />
+      <rect x="528" y="24" width="10" height="10" rx="2" fill="#26a641" class="cell-anim-44-2" />
+      <rect x="528" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-44-3" />
+      <rect x="528" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-44-4" />
+      <rect x="528" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="528" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="540" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="540" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="540" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-45-2" />
+      <rect x="540" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-45-3" />
+      <rect x="540" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="540" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-45-5" />
+      <rect x="540" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-45-6" />
+      <rect x="552" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="552" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="552" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-46-2" />
+      <rect x="552" y="36" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-46-3" />
+      <rect x="552" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-46-4" />
+      <rect x="552" y="60" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-46-5" />
+      <rect x="552" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="564" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="564" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="564" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-47-2" />
+      <rect x="564" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-47-3" />
+      <rect x="564" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="564" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="564" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="576" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="576" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="576" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-48-2" />
+      <rect x="576" y="36" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="576" y="48" width="10" height="10" rx="2" fill="#006d32" class="cell-anim-48-4" />
+      <rect x="576" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-48-5" />
+      <rect x="576" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="588" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="588" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="588" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="588" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-49-3" />
+      <rect x="588" y="48" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-49-4" />
+      <rect x="588" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="588" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-49-6" />
+      <rect x="600" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-50-0" />
+      <rect x="600" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="600" y="24" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="600" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-50-3" />
+      <rect x="600" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="600" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="600" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="612" y="0" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-51-0" />
+      <rect x="612" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="612" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-51-2" />
+      <rect x="612" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-51-3" />
+      <rect x="612" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="612" y="60" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-51-5" />
+      <rect x="612" y="72" width="10" height="10" rx="2" fill="#0e4429" class="cell-anim-51-6" />
+      <rect x="624" y="0" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="624" y="12" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="624" y="24" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-52-2" />
+      <rect x="624" y="36" width="10" height="10" rx="2" fill="#39d353" class="cell-anim-52-3" />
+      <rect x="624" y="48" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="624" y="60" width="10" height="10" rx="2" fill="#161b22"  />
+      <rect x="624" y="72" width="10" height="10" rx="2" fill="#161b22"  />
+      
+    </g>
+
+    <!-- Animated Food -->
+    <g id="food-item" >
+      <circle cx="5" cy="5" r="4.5" fill="#f06292" />
+    </g>
+
+    <!-- Particles -->
+    <g id="particles" style="pointer-events: none;">
+      <circle class="p-0-0" r="1" fill="#ffca28" /><circle class="p-0-1" r="1" fill="#ffca28" /><circle class="p-0-2" r="1" fill="#ffca28" /><circle class="p-1-0" r="1" fill="#ffca28" /><circle class="p-1-1" r="1" fill="#ffca28" /><circle class="p-1-2" r="1" fill="#ffca28" /><circle class="p-2-0" r="1" fill="#ffca28" /><circle class="p-2-1" r="1" fill="#ffca28" /><circle class="p-2-2" r="1" fill="#ffca28" /><circle class="p-3-0" r="1" fill="#ffca28" /><circle class="p-3-1" r="1" fill="#ffca28" /><circle class="p-3-2" r="1" fill="#ffca28" /><circle class="p-4-0" r="1" fill="#ffca28" /><circle class="p-4-1" r="1" fill="#ffca28" /><circle class="p-4-2" r="1" fill="#ffca28" /><circle class="p-5-0" r="1" fill="#ffca28" /><circle class="p-5-1" r="1" fill="#ffca28" /><circle class="p-5-2" r="1" fill="#ffca28" /><circle class="p-6-0" r="1" fill="#ffca28" /><circle class="p-6-1" r="1" fill="#ffca28" /><circle class="p-6-2" r="1" fill="#ffca28" /><circle class="p-7-0" r="1" fill="#ffca28" /><circle class="p-7-1" r="1" fill="#ffca28" /><circle class="p-7-2" r="1" fill="#ffca28" /><circle class="p-8-0" r="1" fill="#ffca28" /><circle class="p-8-1" r="1" fill="#ffca28" /><circle class="p-8-2" r="1" fill="#ffca28" /><circle class="p-9-0" r="1" fill="#ffca28" /><circle class="p-9-1" r="1" fill="#ffca28" /><circle class="p-9-2" r="1" fill="#ffca28" /><circle class="p-10-0" r="1" fill="#ffca28" /><circle class="p-10-1" r="1" fill="#ffca28" /><circle class="p-10-2" r="1" fill="#ffca28" /><circle class="p-11-0" r="1" fill="#ffca28" /><circle class="p-11-1" r="1" fill="#ffca28" /><circle class="p-11-2" r="1" fill="#ffca28" /><circle class="p-12-0" r="1" fill="#ffca28" /><circle class="p-12-1" r="1" fill="#ffca28" /><circle class="p-12-2" r="1" fill="#ffca28" /><circle class="p-13-0" r="1" fill="#ffca28" /><circle class="p-13-1" r="1" fill="#ffca28" /><circle class="p-13-2" r="1" fill="#ffca28" /><circle class="p-14-0" r="1" fill="#ffca28" /><circle class="p-14-1" r="1" fill="#ffca28" /><circle class="p-14-2" r="1" fill="#ffca28" /><circle class="p-15-0" r="1" fill="#ffca28" /><circle class="p-15-1" r="1" fill="#ffca28" /><circle class="p-15-2" r="1" fill="#ffca28" /><circle class="p-16-0" r="1" fill="#ffca28" /><circle class="p-16-1" r="1" fill="#ffca28" /><circle class="p-16-2" r="1" fill="#ffca28" /><circle class="p-17-0" r="1" fill="#ffca28" /><circle class="p-17-1" r="1" fill="#ffca28" /><circle class="p-17-2" r="1" fill="#ffca28" /><circle class="p-18-0" r="1" fill="#ffca28" /><circle class="p-18-1" r="1" fill="#ffca28" /><circle class="p-18-2" r="1" fill="#ffca28" /><circle class="p-19-0" r="1" fill="#ffca28" /><circle class="p-19-1" r="1" fill="#ffca28" /><circle class="p-19-2" r="1" fill="#ffca28" /><circle class="p-20-0" r="1" fill="#ffca28" /><circle class="p-20-1" r="1" fill="#ffca28" /><circle class="p-20-2" r="1" fill="#ffca28" /><circle class="p-21-0" r="1" fill="#ffca28" /><circle class="p-21-1" r="1" fill="#ffca28" /><circle class="p-21-2" r="1" fill="#ffca28" /><circle class="p-22-0" r="1" fill="#ffca28" /><circle class="p-22-1" r="1" fill="#ffca28" /><circle class="p-22-2" r="1" fill="#ffca28" /><circle class="p-23-0" r="1" fill="#ffca28" /><circle class="p-23-1" r="1" fill="#ffca28" /><circle class="p-23-2" r="1" fill="#ffca28" /><circle class="p-24-0" r="1" fill="#ffca28" /><circle class="p-24-1" r="1" fill="#ffca28" /><circle class="p-24-2" r="1" fill="#ffca28" /><circle class="p-25-0" r="1" fill="#ffca28" /><circle class="p-25-1" r="1" fill="#ffca28" /><circle class="p-25-2" r="1" fill="#ffca28" /><circle class="p-26-0" r="1" fill="#ffca28" /><circle class="p-26-1" r="1" fill="#ffca28" /><circle class="p-26-2" r="1" fill="#ffca28" /><circle class="p-27-0" r="1" fill="#ffca28" /><circle class="p-27-1" r="1" fill="#ffca28" /><circle class="p-27-2" r="1" fill="#ffca28" /><circle class="p-28-0" r="1" fill="#ffca28" /><circle class="p-28-1" r="1" fill="#ffca28" /><circle class="p-28-2" r="1" fill="#ffca28" /><circle class="p-29-0" r="1" fill="#ffca28" /><circle class="p-29-1" r="1" fill="#ffca28" /><circle class="p-29-2" r="1" fill="#ffca28" /><circle class="p-30-0" r="1" fill="#ffca28" /><circle class="p-30-1" r="1" fill="#ffca28" /><circle class="p-30-2" r="1" fill="#ffca28" /><circle class="p-31-0" r="1" fill="#ffca28" /><circle class="p-31-1" r="1" fill="#ffca28" /><circle class="p-31-2" r="1" fill="#ffca28" /><circle class="p-32-0" r="1" fill="#ffca28" /><circle class="p-32-1" r="1" fill="#ffca28" /><circle class="p-32-2" r="1" fill="#ffca28" /><circle class="p-33-0" r="1" fill="#ffca28" /><circle class="p-33-1" r="1" fill="#ffca28" /><circle class="p-33-2" r="1" fill="#ffca28" /><circle class="p-34-0" r="1" fill="#ffca28" /><circle class="p-34-1" r="1" fill="#ffca28" /><circle class="p-34-2" r="1" fill="#ffca28" /><circle class="p-35-0" r="1" fill="#ffca28" /><circle class="p-35-1" r="1" fill="#ffca28" /><circle class="p-35-2" r="1" fill="#ffca28" /><circle class="p-36-0" r="1" fill="#ffca28" /><circle class="p-36-1" r="1" fill="#ffca28" /><circle class="p-36-2" r="1" fill="#ffca28" /><circle class="p-37-0" r="1" fill="#ffca28" /><circle class="p-37-1" r="1" fill="#ffca28" /><circle class="p-37-2" r="1" fill="#ffca28" /><circle class="p-38-0" r="1" fill="#ffca28" /><circle class="p-38-1" r="1" fill="#ffca28" /><circle class="p-38-2" r="1" fill="#ffca28" /><circle class="p-39-0" r="1" fill="#ffca28" /><circle class="p-39-1" r="1" fill="#ffca28" /><circle class="p-39-2" r="1" fill="#ffca28" /><circle class="p-40-0" r="1" fill="#ffca28" /><circle class="p-40-1" r="1" fill="#ffca28" /><circle class="p-40-2" r="1" fill="#ffca28" /><circle class="p-41-0" r="1" fill="#ffca28" /><circle class="p-41-1" r="1" fill="#ffca28" /><circle class="p-41-2" r="1" fill="#ffca28" /><circle class="p-42-0" r="1" fill="#ffca28" /><circle class="p-42-1" r="1" fill="#ffca28" /><circle class="p-42-2" r="1" fill="#ffca28" /><circle class="p-43-0" r="1" fill="#ffca28" /><circle class="p-43-1" r="1" fill="#ffca28" /><circle class="p-43-2" r="1" fill="#ffca28" /><circle class="p-44-0" r="1" fill="#ffca28" /><circle class="p-44-1" r="1" fill="#ffca28" /><circle class="p-44-2" r="1" fill="#ffca28" /><circle class="p-45-0" r="1" fill="#ffca28" /><circle class="p-45-1" r="1" fill="#ffca28" /><circle class="p-45-2" r="1" fill="#ffca28" /><circle class="p-46-0" r="1" fill="#ffca28" /><circle class="p-46-1" r="1" fill="#ffca28" /><circle class="p-46-2" r="1" fill="#ffca28" /><circle class="p-47-0" r="1" fill="#ffca28" /><circle class="p-47-1" r="1" fill="#ffca28" /><circle class="p-47-2" r="1" fill="#ffca28" /><circle class="p-48-0" r="1" fill="#ffca28" /><circle class="p-48-1" r="1" fill="#ffca28" /><circle class="p-48-2" r="1" fill="#ffca28" /><circle class="p-49-0" r="1" fill="#ffca28" /><circle class="p-49-1" r="1" fill="#ffca28" /><circle class="p-49-2" r="1" fill="#ffca28" /><circle class="p-50-0" r="1" fill="#ffca28" /><circle class="p-50-1" r="1" fill="#ffca28" /><circle class="p-50-2" r="1" fill="#ffca28" /><circle class="p-51-0" r="1" fill="#ffca28" /><circle class="p-51-1" r="1" fill="#ffca28" /><circle class="p-51-2" r="1" fill="#ffca28" /><circle class="p-52-0" r="1" fill="#ffca28" /><circle class="p-52-1" r="1" fill="#ffca28" /><circle class="p-52-2" r="1" fill="#ffca28" /><circle class="p-53-0" r="1" fill="#ffca28" /><circle class="p-53-1" r="1" fill="#ffca28" /><circle class="p-53-2" r="1" fill="#ffca28" /><circle class="p-54-0" r="1" fill="#ffca28" /><circle class="p-54-1" r="1" fill="#ffca28" /><circle class="p-54-2" r="1" fill="#ffca28" /><circle class="p-55-0" r="1" fill="#ffca28" /><circle class="p-55-1" r="1" fill="#ffca28" /><circle class="p-55-2" r="1" fill="#ffca28" /><circle class="p-56-0" r="1" fill="#ffca28" /><circle class="p-56-1" r="1" fill="#ffca28" /><circle class="p-56-2" r="1" fill="#ffca28" /><circle class="p-57-0" r="1" fill="#ffca28" /><circle class="p-57-1" r="1" fill="#ffca28" /><circle class="p-57-2" r="1" fill="#ffca28" /><circle class="p-58-0" r="1" fill="#ffca28" /><circle class="p-58-1" r="1" fill="#ffca28" /><circle class="p-58-2" r="1" fill="#ffca28" /><circle class="p-59-0" r="1" fill="#ffca28" /><circle class="p-59-1" r="1" fill="#ffca28" /><circle class="p-59-2" r="1" fill="#ffca28" /><circle class="p-60-0" r="1" fill="#ffca28" /><circle class="p-60-1" r="1" fill="#ffca28" /><circle class="p-60-2" r="1" fill="#ffca28" /><circle class="p-61-0" r="1" fill="#ffca28" /><circle class="p-61-1" r="1" fill="#ffca28" /><circle class="p-61-2" r="1" fill="#ffca28" /><circle class="p-62-0" r="1" fill="#ffca28" /><circle class="p-62-1" r="1" fill="#ffca28" /><circle class="p-62-2" r="1" fill="#ffca28" /><circle class="p-63-0" r="1" fill="#ffca28" /><circle class="p-63-1" r="1" fill="#ffca28" /><circle class="p-63-2" r="1" fill="#ffca28" /><circle class="p-64-0" r="1" fill="#ffca28" /><circle class="p-64-1" r="1" fill="#ffca28" /><circle class="p-64-2" r="1" fill="#ffca28" /><circle class="p-65-0" r="1" fill="#ffca28" /><circle class="p-65-1" r="1" fill="#ffca28" /><circle class="p-65-2" r="1" fill="#ffca28" /><circle class="p-66-0" r="1" fill="#ffca28" /><circle class="p-66-1" r="1" fill="#ffca28" /><circle class="p-66-2" r="1" fill="#ffca28" /><circle class="p-67-0" r="1" fill="#ffca28" /><circle class="p-67-1" r="1" fill="#ffca28" /><circle class="p-67-2" r="1" fill="#ffca28" /><circle class="p-68-0" r="1" fill="#ffca28" /><circle class="p-68-1" r="1" fill="#ffca28" /><circle class="p-68-2" r="1" fill="#ffca28" /><circle class="p-69-0" r="1" fill="#ffca28" /><circle class="p-69-1" r="1" fill="#ffca28" /><circle class="p-69-2" r="1" fill="#ffca28" /><circle class="p-70-0" r="1" fill="#ffca28" /><circle class="p-70-1" r="1" fill="#ffca28" /><circle class="p-70-2" r="1" fill="#ffca28" /><circle class="p-71-0" r="1" fill="#ffca28" /><circle class="p-71-1" r="1" fill="#ffca28" /><circle class="p-71-2" r="1" fill="#ffca28" /><circle class="p-72-0" r="1" fill="#ffca28" /><circle class="p-72-1" r="1" fill="#ffca28" /><circle class="p-72-2" r="1" fill="#ffca28" /><circle class="p-73-0" r="1" fill="#ffca28" /><circle class="p-73-1" r="1" fill="#ffca28" /><circle class="p-73-2" r="1" fill="#ffca28" /><circle class="p-74-0" r="1" fill="#ffca28" /><circle class="p-74-1" r="1" fill="#ffca28" /><circle class="p-74-2" r="1" fill="#ffca28" /><circle class="p-75-0" r="1" fill="#ffca28" /><circle class="p-75-1" r="1" fill="#ffca28" /><circle class="p-75-2" r="1" fill="#ffca28" /><circle class="p-76-0" r="1" fill="#ffca28" /><circle class="p-76-1" r="1" fill="#ffca28" /><circle class="p-76-2" r="1" fill="#ffca28" /><circle class="p-77-0" r="1" fill="#ffca28" /><circle class="p-77-1" r="1" fill="#ffca28" /><circle class="p-77-2" r="1" fill="#ffca28" /><circle class="p-78-0" r="1" fill="#ffca28" /><circle class="p-78-1" r="1" fill="#ffca28" /><circle class="p-78-2" r="1" fill="#ffca28" /><circle class="p-79-0" r="1" fill="#ffca28" /><circle class="p-79-1" r="1" fill="#ffca28" /><circle class="p-79-2" r="1" fill="#ffca28" /><circle class="p-80-0" r="1" fill="#ffca28" /><circle class="p-80-1" r="1" fill="#ffca28" /><circle class="p-80-2" r="1" fill="#ffca28" /><circle class="p-81-0" r="1" fill="#ffca28" /><circle class="p-81-1" r="1" fill="#ffca28" /><circle class="p-81-2" r="1" fill="#ffca28" /><circle class="p-82-0" r="1" fill="#ffca28" /><circle class="p-82-1" r="1" fill="#ffca28" /><circle class="p-82-2" r="1" fill="#ffca28" /><circle class="p-83-0" r="1" fill="#ffca28" /><circle class="p-83-1" r="1" fill="#ffca28" /><circle class="p-83-2" r="1" fill="#ffca28" /><circle class="p-84-0" r="1" fill="#ffca28" /><circle class="p-84-1" r="1" fill="#ffca28" /><circle class="p-84-2" r="1" fill="#ffca28" /><circle class="p-85-0" r="1" fill="#ffca28" /><circle class="p-85-1" r="1" fill="#ffca28" /><circle class="p-85-2" r="1" fill="#ffca28" /><circle class="p-86-0" r="1" fill="#ffca28" /><circle class="p-86-1" r="1" fill="#ffca28" /><circle class="p-86-2" r="1" fill="#ffca28" /><circle class="p-87-0" r="1" fill="#ffca28" /><circle class="p-87-1" r="1" fill="#ffca28" /><circle class="p-87-2" r="1" fill="#ffca28" /><circle class="p-88-0" r="1" fill="#ffca28" /><circle class="p-88-1" r="1" fill="#ffca28" /><circle class="p-88-2" r="1" fill="#ffca28" /><circle class="p-89-0" r="1" fill="#ffca28" /><circle class="p-89-1" r="1" fill="#ffca28" /><circle class="p-89-2" r="1" fill="#ffca28" /><circle class="p-90-0" r="1" fill="#ffca28" /><circle class="p-90-1" r="1" fill="#ffca28" /><circle class="p-90-2" r="1" fill="#ffca28" /><circle class="p-91-0" r="1" fill="#ffca28" /><circle class="p-91-1" r="1" fill="#ffca28" /><circle class="p-91-2" r="1" fill="#ffca28" /><circle class="p-92-0" r="1" fill="#ffca28" /><circle class="p-92-1" r="1" fill="#ffca28" /><circle class="p-92-2" r="1" fill="#ffca28" /><circle class="p-93-0" r="1" fill="#ffca28" /><circle class="p-93-1" r="1" fill="#ffca28" /><circle class="p-93-2" r="1" fill="#ffca28" /><circle class="p-94-0" r="1" fill="#ffca28" /><circle class="p-94-1" r="1" fill="#ffca28" /><circle class="p-94-2" r="1" fill="#ffca28" /><circle class="p-95-0" r="1" fill="#ffca28" /><circle class="p-95-1" r="1" fill="#ffca28" /><circle class="p-95-2" r="1" fill="#ffca28" /><circle class="p-96-0" r="1" fill="#ffca28" /><circle class="p-96-1" r="1" fill="#ffca28" /><circle class="p-96-2" r="1" fill="#ffca28" /><circle class="p-97-0" r="1" fill="#ffca28" /><circle class="p-97-1" r="1" fill="#ffca28" /><circle class="p-97-2" r="1" fill="#ffca28" /><circle class="p-98-0" r="1" fill="#ffca28" /><circle class="p-98-1" r="1" fill="#ffca28" /><circle class="p-98-2" r="1" fill="#ffca28" /><circle class="p-99-0" r="1" fill="#ffca28" /><circle class="p-99-1" r="1" fill="#ffca28" /><circle class="p-99-2" r="1" fill="#ffca28" /><circle class="p-100-0" r="1" fill="#ffca28" /><circle class="p-100-1" r="1" fill="#ffca28" /><circle class="p-100-2" r="1" fill="#ffca28" /><circle class="p-101-0" r="1" fill="#ffca28" /><circle class="p-101-1" r="1" fill="#ffca28" /><circle class="p-101-2" r="1" fill="#ffca28" /><circle class="p-102-0" r="1" fill="#ffca28" /><circle class="p-102-1" r="1" fill="#ffca28" /><circle class="p-102-2" r="1" fill="#ffca28" /><circle class="p-103-0" r="1" fill="#ffca28" /><circle class="p-103-1" r="1" fill="#ffca28" /><circle class="p-103-2" r="1" fill="#ffca28" /><circle class="p-104-0" r="1" fill="#ffca28" /><circle class="p-104-1" r="1" fill="#ffca28" /><circle class="p-104-2" r="1" fill="#ffca28" /><circle class="p-105-0" r="1" fill="#ffca28" /><circle class="p-105-1" r="1" fill="#ffca28" /><circle class="p-105-2" r="1" fill="#ffca28" /><circle class="p-106-0" r="1" fill="#ffca28" /><circle class="p-106-1" r="1" fill="#ffca28" /><circle class="p-106-2" r="1" fill="#ffca28" /><circle class="p-107-0" r="1" fill="#ffca28" /><circle class="p-107-1" r="1" fill="#ffca28" /><circle class="p-107-2" r="1" fill="#ffca28" /><circle class="p-108-0" r="1" fill="#ffca28" /><circle class="p-108-1" r="1" fill="#ffca28" /><circle class="p-108-2" r="1" fill="#ffca28" /><circle class="p-109-0" r="1" fill="#ffca28" /><circle class="p-109-1" r="1" fill="#ffca28" /><circle class="p-109-2" r="1" fill="#ffca28" /><circle class="p-110-0" r="1" fill="#ffca28" /><circle class="p-110-1" r="1" fill="#ffca28" /><circle class="p-110-2" r="1" fill="#ffca28" /><circle class="p-111-0" r="1" fill="#ffca28" /><circle class="p-111-1" r="1" fill="#ffca28" /><circle class="p-111-2" r="1" fill="#ffca28" /><circle class="p-112-0" r="1" fill="#ffca28" /><circle class="p-112-1" r="1" fill="#ffca28" /><circle class="p-112-2" r="1" fill="#ffca28" /><circle class="p-113-0" r="1" fill="#ffca28" /><circle class="p-113-1" r="1" fill="#ffca28" /><circle class="p-113-2" r="1" fill="#ffca28" /><circle class="p-114-0" r="1" fill="#ffca28" /><circle class="p-114-1" r="1" fill="#ffca28" /><circle class="p-114-2" r="1" fill="#ffca28" /><circle class="p-115-0" r="1" fill="#ffca28" /><circle class="p-115-1" r="1" fill="#ffca28" /><circle class="p-115-2" r="1" fill="#ffca28" /><circle class="p-116-0" r="1" fill="#ffca28" /><circle class="p-116-1" r="1" fill="#ffca28" /><circle class="p-116-2" r="1" fill="#ffca28" /><circle class="p-117-0" r="1" fill="#ffca28" /><circle class="p-117-1" r="1" fill="#ffca28" /><circle class="p-117-2" r="1" fill="#ffca28" /><circle class="p-118-0" r="1" fill="#ffca28" /><circle class="p-118-1" r="1" fill="#ffca28" /><circle class="p-118-2" r="1" fill="#ffca28" /><circle class="p-119-0" r="1" fill="#ffca28" /><circle class="p-119-1" r="1" fill="#ffca28" /><circle class="p-119-2" r="1" fill="#ffca28" /><circle class="p-120-0" r="1" fill="#ffca28" /><circle class="p-120-1" r="1" fill="#ffca28" /><circle class="p-120-2" r="1" fill="#ffca28" /><circle class="p-121-0" r="1" fill="#ffca28" /><circle class="p-121-1" r="1" fill="#ffca28" /><circle class="p-121-2" r="1" fill="#ffca28" /><circle class="p-122-0" r="1" fill="#ffca28" /><circle class="p-122-1" r="1" fill="#ffca28" /><circle class="p-122-2" r="1" fill="#ffca28" /><circle class="p-123-0" r="1" fill="#ffca28" /><circle class="p-123-1" r="1" fill="#ffca28" /><circle class="p-123-2" r="1" fill="#ffca28" /><circle class="p-124-0" r="1" fill="#ffca28" /><circle class="p-124-1" r="1" fill="#ffca28" /><circle class="p-124-2" r="1" fill="#ffca28" /><circle class="p-125-0" r="1" fill="#ffca28" /><circle class="p-125-1" r="1" fill="#ffca28" /><circle class="p-125-2" r="1" fill="#ffca28" /><circle class="p-126-0" r="1" fill="#ffca28" /><circle class="p-126-1" r="1" fill="#ffca28" /><circle class="p-126-2" r="1" fill="#ffca28" /><circle class="p-127-0" r="1" fill="#ffca28" /><circle class="p-127-1" r="1" fill="#ffca28" /><circle class="p-127-2" r="1" fill="#ffca28" /><circle class="p-128-0" r="1" fill="#ffca28" /><circle class="p-128-1" r="1" fill="#ffca28" /><circle class="p-128-2" r="1" fill="#ffca28" /><circle class="p-129-0" r="1" fill="#ffca28" /><circle class="p-129-1" r="1" fill="#ffca28" /><circle class="p-129-2" r="1" fill="#ffca28" /><circle class="p-130-0" r="1" fill="#ffca28" /><circle class="p-130-1" r="1" fill="#ffca28" /><circle class="p-130-2" r="1" fill="#ffca28" /><circle class="p-131-0" r="1" fill="#ffca28" /><circle class="p-131-1" r="1" fill="#ffca28" /><circle class="p-131-2" r="1" fill="#ffca28" /><circle class="p-132-0" r="1" fill="#ffca28" /><circle class="p-132-1" r="1" fill="#ffca28" /><circle class="p-132-2" r="1" fill="#ffca28" /><circle class="p-133-0" r="1" fill="#ffca28" /><circle class="p-133-1" r="1" fill="#ffca28" /><circle class="p-133-2" r="1" fill="#ffca28" /><circle class="p-134-0" r="1" fill="#ffca28" /><circle class="p-134-1" r="1" fill="#ffca28" /><circle class="p-134-2" r="1" fill="#ffca28" /><circle class="p-135-0" r="1" fill="#ffca28" /><circle class="p-135-1" r="1" fill="#ffca28" /><circle class="p-135-2" r="1" fill="#ffca28" /><circle class="p-136-0" r="1" fill="#ffca28" /><circle class="p-136-1" r="1" fill="#ffca28" /><circle class="p-136-2" r="1" fill="#ffca28" /><circle class="p-137-0" r="1" fill="#ffca28" /><circle class="p-137-1" r="1" fill="#ffca28" /><circle class="p-137-2" r="1" fill="#ffca28" /><circle class="p-138-0" r="1" fill="#ffca28" /><circle class="p-138-1" r="1" fill="#ffca28" /><circle class="p-138-2" r="1" fill="#ffca28" /><circle class="p-139-0" r="1" fill="#ffca28" /><circle class="p-139-1" r="1" fill="#ffca28" /><circle class="p-139-2" r="1" fill="#ffca28" /><circle class="p-140-0" r="1" fill="#ffca28" /><circle class="p-140-1" r="1" fill="#ffca28" /><circle class="p-140-2" r="1" fill="#ffca28" /><circle class="p-141-0" r="1" fill="#ffca28" /><circle class="p-141-1" r="1" fill="#ffca28" /><circle class="p-141-2" r="1" fill="#ffca28" /><circle class="p-142-0" r="1" fill="#ffca28" /><circle class="p-142-1" r="1" fill="#ffca28" /><circle class="p-142-2" r="1" fill="#ffca28" /><circle class="p-143-0" r="1" fill="#ffca28" /><circle class="p-143-1" r="1" fill="#ffca28" /><circle class="p-143-2" r="1" fill="#ffca28" /><circle class="p-144-0" r="1" fill="#ffca28" /><circle class="p-144-1" r="1" fill="#ffca28" /><circle class="p-144-2" r="1" fill="#ffca28" /><circle class="p-145-0" r="1" fill="#ffca28" /><circle class="p-145-1" r="1" fill="#ffca28" /><circle class="p-145-2" r="1" fill="#ffca28" /><circle class="p-146-0" r="1" fill="#ffca28" /><circle class="p-146-1" r="1" fill="#ffca28" /><circle class="p-146-2" r="1" fill="#ffca28" /><circle class="p-147-0" r="1" fill="#ffca28" /><circle class="p-147-1" r="1" fill="#ffca28" /><circle class="p-147-2" r="1" fill="#ffca28" /><circle class="p-148-0" r="1" fill="#ffca28" /><circle class="p-148-1" r="1" fill="#ffca28" /><circle class="p-148-2" r="1" fill="#ffca28" /><circle class="p-149-0" r="1" fill="#ffca28" /><circle class="p-149-1" r="1" fill="#ffca28" /><circle class="p-149-2" r="1" fill="#ffca28" /><circle class="p-150-0" r="1" fill="#ffca28" /><circle class="p-150-1" r="1" fill="#ffca28" /><circle class="p-150-2" r="1" fill="#ffca28" /><circle class="p-151-0" r="1" fill="#ffca28" /><circle class="p-151-1" r="1" fill="#ffca28" /><circle class="p-151-2" r="1" fill="#ffca28" /><circle class="p-152-0" r="1" fill="#ffca28" /><circle class="p-152-1" r="1" fill="#ffca28" /><circle class="p-152-2" r="1" fill="#ffca28" /><circle class="p-153-0" r="1" fill="#ffca28" /><circle class="p-153-1" r="1" fill="#ffca28" /><circle class="p-153-2" r="1" fill="#ffca28" /><circle class="p-154-0" r="1" fill="#ffca28" /><circle class="p-154-1" r="1" fill="#ffca28" /><circle class="p-154-2" r="1" fill="#ffca28" /><circle class="p-155-0" r="1" fill="#ffca28" /><circle class="p-155-1" r="1" fill="#ffca28" /><circle class="p-155-2" r="1" fill="#ffca28" /><circle class="p-156-0" r="1" fill="#ffca28" /><circle class="p-156-1" r="1" fill="#ffca28" /><circle class="p-156-2" r="1" fill="#ffca28" /><circle class="p-157-0" r="1" fill="#ffca28" /><circle class="p-157-1" r="1" fill="#ffca28" /><circle class="p-157-2" r="1" fill="#ffca28" /><circle class="p-158-0" r="1" fill="#ffca28" /><circle class="p-158-1" r="1" fill="#ffca28" /><circle class="p-158-2" r="1" fill="#ffca28" /><circle class="p-159-0" r="1" fill="#ffca28" /><circle class="p-159-1" r="1" fill="#ffca28" /><circle class="p-159-2" r="1" fill="#ffca28" /><circle class="p-160-0" r="1" fill="#ffca28" /><circle class="p-160-1" r="1" fill="#ffca28" /><circle class="p-160-2" r="1" fill="#ffca28" /><circle class="p-161-0" r="1" fill="#ffca28" /><circle class="p-161-1" r="1" fill="#ffca28" /><circle class="p-161-2" r="1" fill="#ffca28" /><circle class="p-162-0" r="1" fill="#ffca28" /><circle class="p-162-1" r="1" fill="#ffca28" /><circle class="p-162-2" r="1" fill="#ffca28" /><circle class="p-163-0" r="1" fill="#ffca28" /><circle class="p-163-1" r="1" fill="#ffca28" /><circle class="p-163-2" r="1" fill="#ffca28" /><circle class="p-164-0" r="1" fill="#ffca28" /><circle class="p-164-1" r="1" fill="#ffca28" /><circle class="p-164-2" r="1" fill="#ffca28" /><circle class="p-165-0" r="1" fill="#ffca28" /><circle class="p-165-1" r="1" fill="#ffca28" /><circle class="p-165-2" r="1" fill="#ffca28" /><circle class="p-166-0" r="1" fill="#ffca28" /><circle class="p-166-1" r="1" fill="#ffca28" /><circle class="p-166-2" r="1" fill="#ffca28" /><circle class="p-167-0" r="1" fill="#ffca28" /><circle class="p-167-1" r="1" fill="#ffca28" /><circle class="p-167-2" r="1" fill="#ffca28" /><circle class="p-168-0" r="1" fill="#ffca28" /><circle class="p-168-1" r="1" fill="#ffca28" /><circle class="p-168-2" r="1" fill="#ffca28" />
+    </g>
+
+    <!-- Snake Group -->
+    <g id="snake">
+      <!-- Body Segments -->
+      
+      <g id="snake-segment-0" class="snake-segment-0">
+        <rect width="10" height="10" rx="2.5" fill="#26a641" />
+      </g>
+      <g id="snake-segment-1" class="snake-segment-1">
+        <rect width="10" height="10" rx="2.5" fill="#26a641" />
+      </g>
+      <g id="snake-segment-2" class="snake-segment-2">
+        <rect width="10" height="10" rx="2.5" fill="#26a641" />
+      </g>
+      <g id="snake-segment-3" class="snake-segment-3">
+        <rect width="10" height="10" rx="2.5" fill="#26a641" />
+      </g>
+      <g id="snake-segment-4" class="snake-segment-4">
+        <rect width="10" height="10" rx="2.5" fill="#26a641" />
+      </g>
+      <g id="snake-segment-5" class="snake-segment-5">
+        <rect width="10" height="10" rx="2.5" fill="#26a641" />
+      </g>
+
+      <!-- Tail -->
+      <g id="snake-tail">
+        <rect width="10" height="10" rx="4" transform="scale(0.8) translate(1.25, 1.25)" fill="#26a641" />
+      </g>
+
+      <!-- Head -->
+      <g id="snake-head" >
+        
+        <!-- Classic Head -->
+        <rect width="10" height="10" rx="3" fill="#39d353" />
+        <!-- Eyes -->
+        <circle cx="3" cy="3" r="1.2" fill="#0d1117" />
+        <circle cx="7" cy="3" r="1.2" fill="#0d1117" />
+        <!-- Tongue -->
+        <path d="M 5,0 L 5,-2 M 4,-2 L 6,-2" stroke="#ff5555" stroke-width="0.8" stroke-linecap="round" />
+      
+      </g>
+    </g>
+  </g>
+
+  <!-- Footer Legend -->
+  <g transform="translate(554, 152)">
+    <text x="-25" y="8" class="legend-text">Less</text>
+    <rect x="5" y="0" width="10" height="10" rx="1.5" fill="#161b22" />
+    <rect x="17" y="0" width="10" height="10" rx="1.5" fill="#0e4429" />
+    <rect x="29" y="0" width="10" height="10" rx="1.5" fill="#006d32" />
+    <rect x="41" y="0" width="10" height="10" rx="1.5" fill="#26a641" />
+    <rect x="53" y="0" width="10" height="10" rx="1.5" fill="#39d353" />
+    <text x="68" y="8" class="legend-text">More</text>
+  </g>
+</svg>

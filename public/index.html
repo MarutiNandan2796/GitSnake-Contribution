@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitSnake Pro - Custom GitHub Contribution Snake Generator</title>
+  <meta name="description" content="Generate highly-customizable, animated SVG contribution snakes for your GitHub profile README. Support for multiple skins, themes, and exports.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <h1>GitSnake Pro <span class="badge">v1.0</span></h1>
+      <p>Custom GitHub Contribution Snake Generator</p>
+    </div>
+    <div class="sound-control">
+      <button id="sound-btn" class="sound-toggle-btn">
+        <span class="sound-icon">🔊</span> Arcade Sound: OFF
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left Column: Controls -->
+    <section class="control-panel">
+      <!-- User Input Card -->
+      <div class="panel-card" id="user-config-card">
+        <h2><span>👤</span> GitHub Profile</h2>
+        <div class="form-group">
+          <label for="username-input">GitHub Username</label>
+          <div class="input-wrapper">
+            <input type="text" id="username-input" value="MarutiNandan2796" placeholder="Enter GitHub username...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Snake Skins Selector -->
+      <div class="panel-card">
+        <h2><span>🐍</span> Snake Skins</h2>
+        <div class="form-group">
+          <label>Choose a Skin</label>
+          <div class="select-grid" id="skins-grid">
+            <div class="select-item active" data-skin="classic">Classic Snake</div>
+            <div class="select-item" data-skin="dragon">Dragon</div>
+            <div class="select-item" data-skin="robot">Robot</div>
+            <div class="select-item" data-skin="pacman">Pacman</div>
+            <div class="select-item" data-skin="ghost">Ghost</div>
+            <div class="select-item" data-skin="fox">Fox</div>
+            <div class="select-item" data-skin="cat">Cat</div>
+            <div class="select-item" data-skin="dinosaur">Dinosaur</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Themes Selector -->
+      <div class="panel-card">
+        <h2><span>🎨</span> Themes</h2>
+        <div class="form-group">
+          <label>Select Theme Palette</label>
+          <div class="select-grid" id="themes-grid">
+            <div class="select-item active" data-theme="classic-dark">Classic Dark</div>
+            <div class="select-item" data-theme="classic-light">Classic Light</div>
+            <div class="select-item" data-theme="matrix">Matrix</div>
+            <div class="select-item" data-theme="cyberpunk">Cyberpunk</div>
+            <div class="select-item" data-theme="neon">Neon</div>
+            <div class="select-item" data-theme="ocean">Ocean</div>
+            <div class="select-item" data-theme="sakura">Sakura</div>
+            <div class="select-item" data-theme="fire">Fire</div>
+            <div class="select-item" data-theme="galaxy">Galaxy</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animation Options & Speeds -->
+      <div class="panel-card">
+        <h2><span>⚙️</span> Speed & Parameters</h2>
+        <div class="form-group">
+          <label>Step Duration (<span id="speed-val">120</span>ms)</label>
+          <input type="range" id="speed-slider" class="range-input" min="60" max="250" value="120" step="10">
+          <div class="slider-labels">
+            <span>Fast (60ms)</span>
+            <span>Slow (250ms)</span>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <label>Visual Addons</label>
+          <div class="toggle-grid">
+            <label class="checkbox-toggle">
+              <input type="checkbox" id="toggle-glow" checked>
+              <span class="toggle-btn"></span>
+              <span class="toggle-label">Grid Glow</span>
+            </label>
+            <label class="checkbox-toggle">
+              <input type="checkbox" id="toggle-particles" checked>
+              <span class="toggle-btn"></span>
+              <span class="toggle-label">Particles</span>
+            </label>
+            <label class="checkbox-toggle">
+              <input type="checkbox" id="toggle-tail" checked>
+              <span class="toggle-btn"></span>
+              <span class="toggle-label">Tail Wag</span>
+            </label>
+            <label class="checkbox-toggle">
+              <input type="checkbox" id="toggle-wave" checked>
+              <span class="toggle-btn"></span>
+              <span class="toggle-label">Body Wave</span>
+            </label>
+            <label class="checkbox-toggle">
+              <input type="checkbox" id="toggle-blink" checked>
+              <span class="toggle-btn"></span>
+              <span class="toggle-label">Blinking Eyes</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collapsible Custom Palette Builder -->
+      <div class="panel-card">
+        <div class="collapsible-trigger collapsed" id="custom-theme-trigger">
+          <h2><span>🌈</span> Custom Theme Editor</h2>
+        </div>
+        <div class="collapsible-content collapsed" id="custom-theme-content">
+          <div class="form-group">
+            <label class="checkbox-toggle" style="margin-bottom: 1rem;">
+              <input type="checkbox" id="enable-custom-colors">
+              <span class="toggle-btn"></span>
+              <span class="toggle-label">Enable Custom Colors</span>
+            </label>
+            <div class="color-picker-grid">
+              <div class="color-input-group">
+                <label>Card BG</label>
+                <input type="color" id="color-bg" value="#0a0512">
+              </div>
+              <div class="color-input-group">
+                <label>Snake Head</label>
+                <input type="color" id="color-head" value="#ffe600">
+              </div>
+              <div class="color-input-group">
+                <label>Snake Body</label>
+                <input type="color" id="color-body" value="#00f0ff">
+              </div>
+              <div class="color-input-group">
+                <label>Food Orb</label>
+                <input type="color" id="color-food" value="#ff007f">
+              </div>
+              <div class="color-input-group">
+                <label>Empty Cell</label>
+                <input type="color" id="color-empty" value="#140c21">
+              </div>
+              <div class="color-input-group">
+                <label>Level 1</label>
+                <input type="color" id="color-l1" value="#ffccd5">
+              </div>
+              <div class="color-input-group">
+                <label>Level 2</label>
+                <input type="color" id="color-l2" value="#ffb3c1">
+              </div>
+              <div class="color-input-group">
+                <label>Level 3</label>
+                <input type="color" id="color-l3" value="#ff85a1">
+              </div>
+              <div class="color-input-group">
+                <label>Level 4</label>
+                <input type="color" id="color-l4" value="#ff4d6d">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Preview & Integration -->
+    <section class="preview-container">
+      <!-- Live Preview Display -->
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-title"><span>📺</span> Live Animated Preview</div>
+          <span style="font-size: 0.8rem; color: var(--text-secondary);" id="status-tag">Loading animation...</span>
+        </div>
+        <div class="preview-screen">
+          <img id="snake-preview-img" src="" alt="Animated Snake Contribution Calendar">
+        </div>
+        <div class="action-buttons">
+          <button id="download-svg-btn" class="btn btn-primary">Download SVG</button>
+          <button id="download-png-btn" class="btn btn-secondary">Download PNG</button>
+        </div>
+      </div>
+
+      <!-- Embed code generator -->
+      <div class="panel-card embed-card">
+        <h3><span>🔗</span> Embed in GitHub Profile</h3>
+        <div class="tabs">
+          <div class="tab active" data-tab="markdown">Markdown</div>
+          <div class="tab" data-tab="html">HTML</div>
+          <div class="tab" data-tab="url">Raw Link</div>
+        </div>
+        <div class="code-box">
+          <textarea id="embed-code-area" readonly></textarea>
+          <button id="copy-code-btn" class="copy-btn">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Section: Complete Project Documentation -->
+    <section class="docs-section">
+      <h2><span>📚</span> GitSnake Pro Integration Guide</h2>
+      <div class="docs-grid">
+        <div class="panel-card doc-card">
+          <h3>1. Automated Daily Generation</h3>
+          <p>You can set up a GitHub Action to automatically regenerate your snake every night and push it to a branch (e.g., <code>output</code>), allowing you to embed a completely self-updating SVG!</p>
+          <pre># .github/workflows/generate.yml
+name: Generate Snake
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Daily
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate SVG
+        uses: Platane/snk@v3 # (Or GitSnake Pro Action)</pre>
+        </div>
+
+        <div class="panel-card doc-card">
+          <h3>2. Command Line Generator</h3>
+          <p>Generate high-quality animated SVGs and static PNG files directly from your terminal. Set the <code>GITHUB_TOKEN</code> environment variable to download real user profiles.</p>
+          <pre># Install dependencies
+npm install
+
+# Run command
+npm run generate -- --user MarutiNandan2796 --skin dragon --theme matrix --png
+
+# Options
+--skin [classic|dragon|robot|pacman|ghost|fox|cat|dinosaur]
+--theme [matrix|cyberpunk|neon|sakura|fire|galaxy...]</pre>
+        </div>
+
+        <div class="panel-card doc-card">
+          <h3>3. API Query Formats</h3>
+          <p>Host GitSnake Pro on your own server (Vercel, Render, etc.) and hotlink the animated image directly into your README files using dynamic endpoints.</p>
+          <pre># Markdown Embed
+![GitSnake](http://localhost:3000/api/preview?user=MarutiNandan2796&skin=robot&theme=cyberpunk)
+
+# API Query Variables
+?user=&lt;name&gt;
+&amp;skin=[classic|dragon|robot|...]
+&amp;theme=[matrix|cyberpunk|...]
+&amp;speed=120
+&amp;foodGlow=true
+&amp;particles=true</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

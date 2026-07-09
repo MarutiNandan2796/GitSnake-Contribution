@@ -1,0 +1,40 @@
+{
+  "name": "github-snake-pro",
+  "version": "1.0.0",
+  "description": "Custom GitHub Contribution Snake Generator",
+  "main": "dist/server/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server/index.ts",
+    "start": "node dist/server/index.js",
+    "build": "tsc",
+    "generate": "tsx src/cli/index.ts",
+    "test": "vitest run",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\""
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.4",
+    "eslint": "^9.9.1",
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "keywords": [
+    "github",
+    "snake",
+    "contribution",
+    "svg",
+    "generator",
+    "animation"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}
