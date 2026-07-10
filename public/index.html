@@ -48,6 +48,9 @@
             <div class="select-item" data-skin="fox">Fox</div>
             <div class="select-item" data-skin="cat">Cat</div>
             <div class="select-item" data-skin="dinosaur">Dinosaur</div>
+            <div class="select-item" data-skin="unicorn">Unicorn</div>
+            <div class="select-item" data-skin="ninja">Ninja</div>
+            <div class="select-item" data-skin="ufo">UFO</div>
           </div>
         </div>
       </div>
@@ -67,6 +70,9 @@
             <div class="select-item" data-theme="sakura">Sakura</div>
             <div class="select-item" data-theme="fire">Fire</div>
             <div class="select-item" data-theme="galaxy">Galaxy</div>
+            <div class="select-item" data-theme="dracula">Dracula</div>
+            <div class="select-item" data-theme="synthwave">Synthwave</div>
+            <div class="select-item" data-theme="pride">Pride</div>
           </div>
         </div>
       </div>
@@ -172,18 +178,115 @@
 
     <!-- Right Column: Preview & Integration -->
     <section class="preview-container">
-      <!-- Live Preview Display -->
-      <div class="preview-card">
+      <!-- Live Preview & Playable Arcade Display -->
+      <div class="preview-card glass-panel">
         <div class="preview-header">
-          <div class="preview-title"><span>📺</span> Live Animated Preview</div>
+          <div class="preview-modes">
+            <button class="mode-tab active" id="mode-autoplay-btn">📺 Autoplay</button>
+            <button class="mode-tab" id="mode-arcade-btn">🕹️ Play Arcade</button>
+          </div>
           <span style="font-size: 0.8rem; color: var(--text-secondary);" id="status-tag">Loading animation...</span>
         </div>
-        <div class="preview-screen">
+        
+        <!-- Autoplay Screen -->
+        <div class="preview-screen" id="autoplay-screen">
           <img id="snake-preview-img" src="" alt="Animated Snake Contribution Calendar">
         </div>
+
+        <!-- Arcade Screen -->
+        <div class="preview-screen hidden" id="arcade-screen">
+          <div id="arcade-board-container" class="arcade-board-container">
+            <!-- Loading or start screen overlay -->
+            <div id="arcade-overlay" class="arcade-overlay">
+              <div class="overlay-content">
+                <h3>GitSnake Arcade</h3>
+                <p>Eat your contribution blocks to grow and score points!</p>
+                <div class="controls-guide">
+                  <div>⌨️ Move: <span>W A S D</span> / <span>▲ ◀ ▼ ▶</span></div>
+                  <div>⏸️ Pause: <span>SPACE</span></div>
+                </div>
+                <button id="start-arcade-btn" class="btn btn-primary">Start Game</button>
+              </div>
+            </div>
+            <div id="arcade-svg-wrapper"></div>
+          </div>
+        </div>
+
+        <!-- Scoreboard under Arcade Board (only visible when in arcade mode) -->
+        <div id="arcade-scoreboard" class="arcade-scoreboard hidden">
+          <div class="score-item">
+            <span class="label">SCORE</span>
+            <span class="value" id="arcade-score">00000</span>
+          </div>
+          <div class="score-item">
+            <span class="label">HIGH SCORE</span>
+            <span class="value" id="arcade-high-score">00000</span>
+          </div>
+          <div class="score-item">
+            <span class="label">REMAINING</span>
+            <span class="value" id="arcade-remaining">0 / 0</span>
+          </div>
+        </div>
+
         <div class="action-buttons">
           <button id="download-svg-btn" class="btn btn-primary">Download SVG</button>
           <button id="download-png-btn" class="btn btn-secondary">Download PNG</button>
+        </div>
+      </div>
+
+      <!-- GitStats Analytics Dashboard -->
+      <div class="panel-card stats-card" id="stats-dashboard-card">
+        <h2><span>📊</span> Profile GitStats Insights</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-value" id="stat-total-commits">-</span>
+            <span class="stat-label">Total Commits</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value" id="stat-longest-streak">-</span>
+            <span class="stat-label">Longest Streak</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value" id="stat-peak-commits">-</span>
+            <span class="stat-label">Peak Daily Commits</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value" id="stat-active-days">-</span>
+            <span class="stat-label">Active Weekdays</span>
+          </div>
+        </div>
+        <div class="stat-chart-container">
+          <label>Commit Level Distribution</label>
+          <div class="bar-chart">
+            <div class="bar-group">
+              <span class="bar-label">L4 (High)</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill level-4" id="bar-l4" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count" id="count-l4">0</span>
+            </div>
+            <div class="bar-group">
+              <span class="bar-label">L3</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill level-3" id="bar-l3" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count" id="count-l3">0</span>
+            </div>
+            <div class="bar-group">
+              <span class="bar-label">L2</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill level-2" id="bar-l2" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count" id="count-l2">0</span>
+            </div>
+            <div class="bar-group">
+              <span class="bar-label">L1 (Low)</span>
+              <div class="bar-wrapper">
+                <div class="bar-fill level-1" id="bar-l1" style="width: 0%;"></div>
+              </div>
+              <span class="bar-count" id="count-l1">0</span>
+            </div>
+          </div>
         </div>
       </div>
 

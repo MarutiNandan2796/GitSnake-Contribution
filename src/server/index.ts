@@ -107,6 +107,36 @@ async function generateSnakeFromRequest(
 }
 
 /**
+ * GET /api/data
+ * Returns the raw contribution calendar data in JSON format.
+ */
+app.get("/api/data", async (req, res) => {
+  try {
+    const username = (req.query.user as string) || "octocat";
+    let contributionData;
+
+    try {
+      const token = process.env.GITHUB_TOKEN;
+      if (token && username !== "mock-user") {
+        contributionData = await fetchGitHubContributions(username, token);
+      } else {
+        contributionData = generateMockContributions(username);
+      }
+    } catch (error: any) {
+      Logger.warn(
+        `API fetch failed for "${username}" in /api/data. Falling back to mock data. Reason: ${error.message}`,
+      );
+      contributionData = generateMockContributions(username);
+    }
+
+    return res.json(contributionData);
+  } catch (error: any) {
+    Logger.error("Error fetching contribution data JSON", error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+/**
  * GET /api/preview
  * Returns the SVG image directly. Used for hotlinking in profile READMEs.
  */

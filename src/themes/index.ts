@@ -24,7 +24,10 @@ export type ThemeName =
   | "ocean"
   | "sakura"
   | "fire"
-  | "galaxy";
+  | "galaxy"
+  | "dracula"
+  | "synthwave"
+  | "pride";
 
 export const THEMES: Record<ThemeName, ThemeColors> = {
   "classic-light": {
@@ -168,6 +171,54 @@ export const THEMES: Record<ThemeName, ThemeColors> = {
     food: "#00f5d4",
     sparkle: "#ffffff",
     glow: "#7b2cbf",
+  },
+  dracula: {
+    background: "#282a36",
+    gridLine: "#44475a",
+    emptyCell: "#1e1f29",
+    level1: "#8be9fd",
+    level2: "#50fa7b",
+    level3: "#ffb86c",
+    level4: "#ff79c6",
+    snakeHead: "#bd93f9",
+    snakeBody: "#8be9fd",
+    snakeEyes: "#282a36",
+    snakeTongue: "#ff5555",
+    food: "#ff79c6",
+    sparkle: "#f1fa8c",
+    glow: "#bd93f9",
+  },
+  synthwave: {
+    background: "#2b0f54",
+    gridLine: "#3e1e68",
+    emptyCell: "#1c073a",
+    level1: "#ff7e5f",
+    level2: "#feb47b",
+    level3: "#ff5e62",
+    level4: "#ff2a5f",
+    snakeHead: "#00f0ff",
+    snakeBody: "#bd00ff",
+    snakeEyes: "#ffffff",
+    snakeTongue: "#ff7e5f",
+    food: "#ff2a5f",
+    sparkle: "#feb47b",
+    glow: "#bd00ff",
+  },
+  pride: {
+    background: "#1a1a1a",
+    gridLine: "#333333",
+    emptyCell: "#262626",
+    level1: "#e40303",
+    level2: "#ff8c00",
+    level3: "#ffeb00",
+    level4: "#008026",
+    snakeHead: "#ffffff",
+    snakeBody: "#ff007f",
+    snakeEyes: "#000000",
+    snakeTongue: "#002fa7",
+    food: "#ff007f",
+    sparkle: "#7400b8",
+    glow: "#ff007f",
   },
 };
 

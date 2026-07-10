@@ -15,7 +15,10 @@ export type SkinName =
   | "ghost"
   | "fox"
   | "cat"
-  | "dinosaur";
+  | "dinosaur"
+  | "unicorn"
+  | "ninja"
+  | "ufo";
 
 export const SKINS: Record<SkinName, SkinRenderer> = {
   classic: {
@@ -317,6 +320,142 @@ export const SKINS: Record<SkinName, SkinRenderer> = {
         <circle cx="3.5" cy="3.5" r="0.8" fill="${colors.sparkle}" opacity="0.7" />
         <circle cx="6.5" cy="6.5" r="0.6" fill="${colors.sparkle}" opacity="0.7" />
         <circle cx="4" cy="7" r="0.7" fill="${colors.sparkle}" opacity="0.7" />
+      `;
+    },
+  },
+
+  unicorn: {
+    renderHead(colors: ThemeColors): string {
+      return `
+        <!-- Unicorn Head -->
+        <rect width="10" height="10" rx="3.5" fill="#fdf0f6" />
+        <!-- Horn -->
+        <polygon points="5,-3.5 3.5,0.5 6.5,0.5" fill="#ffe259" />
+        <path d="M 5,-3.5 L 5,0.5" stroke="#ffa7c4" stroke-width="0.5" />
+        <!-- Cheeks -->
+        <circle cx="2.5" cy="7.5" r="1.2" fill="#ffb7b2" opacity="0.8" />
+        <circle cx="7.5" cy="7.5" r="1.2" fill="#ffb7b2" opacity="0.8" />
+        <!-- Eyes -->
+        <circle cx="3" cy="4.5" r="0.8" fill="#4a4e69" />
+        <circle cx="7" cy="4.5" r="0.8" fill="#4a4e69" />
+        <!-- Ears -->
+        <polygon points="1,2 -0.5,-1 2.5,1.5" fill="#fdf0f6" />
+        <polygon points="9,2 10.5,-1 7.5,1.5" fill="#fdf0f6" />
+        <polygon points="0.8,1.8 0,-0.2 1.8,1.4" fill="#ffa7c4" />
+        <polygon points="9.2,1.8 10,-0.2 8.2,1.4" fill="#ffa7c4" />
+      `;
+    },
+    renderBodySegment(index: number, colors: ThemeColors): string {
+      const unicornBodyColors = ["#ffc6ff", "#bdb2ff", "#9bf6ff", "#caffbf", "#fdffb6", "#ffd166"];
+      const segmentColor = unicornBodyColors[index % unicornBodyColors.length];
+      return `<rect width="10" height="10" rx="4" fill="${segmentColor}" />`;
+    },
+    renderTail(colors: ThemeColors): string {
+      return `
+        <!-- Fluffy Unicorn Tail -->
+        <circle cx="3" cy="5" r="2.5" fill="#ffc6ff" />
+        <circle cx="7" cy="5" r="2.5" fill="#ffc6ff" />
+        <circle cx="5" cy="4" r="3.2" fill="#ffc6ff" />
+        <circle cx="5" cy="6.5" r="2" fill="#ffffff" opacity="0.6" />
+      `;
+    },
+    renderFood(colors: ThemeColors): string {
+      return `
+        <!-- Star food -->
+        <polygon points="5,0.5 6.2,3.5 9.5,3.8 7,6 7.8,9.2 5,7.5 2.2,9.2 3,6 0.5,3.8 3.8,3.5" fill="${colors.sparkle}" />
+      `;
+    },
+  },
+
+  ninja: {
+    renderHead(colors: ThemeColors): string {
+      return `
+        <!-- Ninja Head -->
+        <rect width="10" height="10" rx="3" fill="#1a1a1a" />
+        <!-- Mask Cutout -->
+        <rect x="2" y="2.5" width="6" height="3" rx="1" fill="#ffffff" />
+        <!-- Eyes -->
+        <circle cx="3.8" cy="4" r="0.8" fill="#000000" />
+        <circle cx="6.2" cy="4" r="0.8" fill="#000000" />
+        <!-- Headband Ribbon -->
+        <path d="M 1,1 L -2,-1 L -1,1 Z" fill="#ff3333" />
+        <path d="M 1,2 L -2.5,3 L -1,3 Z" fill="#ff3333" />
+      `;
+    },
+    renderBodySegment(index: number, colors: ThemeColors): string {
+      const wrapColor = index % 2 === 0 ? "#2b2b2b" : "#1f1f1f";
+      return `
+        <rect width="10" height="10" rx="2" fill="${wrapColor}" />
+        <!-- Wrap lines -->
+        <line x1="0" y1="2" x2="10" y2="8" stroke="#3d3d3d" stroke-width="0.8" />
+        <line x1="10" y1="2" x2="0" y2="8" stroke="#3d3d3d" stroke-width="0.8" />
+      `;
+    },
+    renderTail(colors: ThemeColors): string {
+      return `
+        <!-- Ninja Katana Hilt -->
+        <rect x="4" y="0" width="2" height="10" rx="0.5" fill="#e0a96d" />
+        <!-- Guard -->
+        <rect x="2" y="7" width="6" height="1.5" rx="0.3" fill="#1a1a1a" />
+        <!-- Handle wrap details -->
+        <line x1="4" y1="2" x2="6" y2="4" stroke="#000000" stroke-width="0.6" />
+        <line x1="4" y1="4" x2="6" y2="6" stroke="#000000" stroke-width="0.6" />
+      `;
+    },
+    renderFood(colors: ThemeColors): string {
+      return `
+        <!-- Sushi roll -->
+        <circle cx="5" cy="5" r="4.5" fill="#000000" />
+        <circle cx="5" cy="5" r="3.2" fill="#ffffff" />
+        <!-- Roe/Salmon center -->
+        <circle cx="5" cy="5" r="1.5" fill="#ff5722" />
+        <circle cx="4.2" cy="4.2" r="0.6" fill="#4caf50" />
+      `;
+    },
+  },
+
+  ufo: {
+    renderHead(colors: ThemeColors): string {
+      return `
+        <!-- UFO Saucer Base -->
+        <ellipse cx="5" cy="6" rx="5" ry="2.2" fill="#8d99ae" />
+        <ellipse cx="5" cy="6" rx="4" ry="1.2" fill="#d8f3dc" opacity="0.7" />
+        <!-- Glass Dome -->
+        <path d="M 2.5,5 C 2.5,2 7.5,2 7.5,5 Z" fill="#00f5d4" opacity="0.65" />
+        <!-- Little Alien inside -->
+        <circle cx="5" cy="4" r="1.1" fill="#39ff14" />
+        <circle cx="4.6" cy="3.7" r="0.3" fill="#000000" />
+        <circle cx="5.4" cy="3.7" r="0.3" fill="#000000" />
+        <!-- Lights -->
+        <circle cx="2" cy="6.2" r="0.5" fill="#ffe600" />
+        <circle cx="5" cy="6.8" r="0.5" fill="#ffe600" />
+        <circle cx="8" cy="6.2" r="0.5" fill="#ffe600" />
+      `;
+    },
+    renderBodySegment(index: number, colors: ThemeColors): string {
+      return `
+        <rect width="10" height="10" rx="1.5" fill="#4a4e69" />
+        <rect x="1" y="1" width="8" height="8" rx="1" fill="#c0c0c0" />
+        <!-- Power Core center -->
+        <circle cx="5" cy="5" r="1.8" fill="${colors.glow || "#00f0ff"}" />
+      `;
+    },
+    renderTail(colors: ThemeColors): string {
+      return `
+        <!-- Plasma Jet -->
+        <polygon points="5,10 1,0 9,0" fill="#00f5d4" opacity="0.4" />
+        <polygon points="5,8 2.5,0 7.5,0" fill="#ffffff" opacity="0.8" />
+      `;
+    },
+    renderFood(colors: ThemeColors): string {
+      return `
+        <!-- Energy Cylinder -->
+        <rect x="2.5" y="1.5" width="5" height="7" rx="1" fill="#333533" />
+        <!-- Glowing core bands -->
+        <rect x="3" y="3" width="4" height="1.2" fill="${colors.food}" />
+        <rect x="3" y="5.8" width="4" height="1.2" fill="${colors.food}" />
+        <!-- Sparks -->
+        <circle cx="5" cy="4.8" r="0.6" fill="#ffffff" />
       `;
     },
   },
